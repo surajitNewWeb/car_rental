@@ -7,10 +7,8 @@
   font-style: normal;
 }
 
-body {
-  font-family: cursive;
-  color: #000000;
-  background: #e0e4e8;
+body{
+  background-color: #e7edf4a5;
 }
 
 /* Header */
