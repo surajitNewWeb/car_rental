@@ -63,8 +63,8 @@
           <h6 class="fw-bold mb-3">Our Mobile App</h6>
           <p class="text-muted small">Download our app for faster access and exclusive deals.</p>
           <div class="d-flex gap-2 mb-3">
-            <a href="#"><img src="../assets/images/google-pay.jpg" alt="Google Play" height="40"></a>
-            <a href="#"><img src="../assets/images/app-store.jpg" alt="App Store" height="40"></a>
+            <a href="#"><img src="user/assets/images/google-pay.jpg" alt="Google Play" height="40"></a>
+            <a href="#"><img src="user/assets/images/app-store.jpg" alt="App Store" height="40"></a>
           </div>
           <!-- Social Icons -->
           <div class="d-flex gap-3 icon">

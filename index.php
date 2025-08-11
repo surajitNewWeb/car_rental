@@ -51,7 +51,7 @@
       <p>Coupe</p>
     </div>
     <div class="cat-item">
-      <img src="user/assetsuser/assets/images/SVG (4).png" alt="Hybrid">
+      <img src="user/assets/images/SVG (4).png" alt="Hybrid">
       <p>Hybrid</p>
     </div>
     <div class="cat-item">
