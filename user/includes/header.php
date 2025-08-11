@@ -66,10 +66,10 @@
 
         <!-- Right section -->
         <div class="d-flex align-items-center gap-3">
-          <a href="../pages/signup.php" class="text-decoration-none text-dark">
+          <a href="user/pages/signup.php" class="text-decoration-none text-dark">
             <i class="fa-regular fa-user me-1"></i>Sign -Up
           </a>
-          <a href="../pages/login.php" class="log text-decoration-none">Log in</a>
+          <a href="user/pages/login.php" class="log text-decoration-none">Log in</a>
         </div>
       </div>
     </div>

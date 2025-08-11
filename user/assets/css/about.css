@@ -1,0 +1,209 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background: #f8f9fa;
+}
+
+/* Header */
+.about-header {
+    background: url('https://images.unsplash.com/photo-1502877338535-766e1452684a') no-repeat center/cover;
+    height: 50vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+}
+.about-header .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+.about-header h1, .about-header p {
+    z-index: 1;
+}
+.about-header h1 {
+    font-size: 3rem;
+}
+.about-header p {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+/* About Company */
+.about-company {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px 10%;
+    gap: 40px;
+    align-items: center;
+    background: #fff;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+.about-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Mission & Vision */
+.mission-vision {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px 10%;
+    gap: 20px;
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+}
+.mission, .vision {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.mission h2, .vision h2 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+/* Why Choose Us */
+.why-choose {
+    padding: 50px 10%;
+    background: #fdfdfd;
+    text-align: center;
+}
+.why-choose h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+.choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.choose-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.choose-card img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+.choose-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* Our Team */
+.our-team {
+    padding: 50px 10%;
+    text-align: center;
+}
+.team-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.team-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 250px;
+}
+.team-card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+.team-card h3 {
+    margin-bottom: 5px;
+}
+
+/* Testimonials */
+.testimonials {
+    padding: 50px 10%;
+    background: #f0f0f0;
+    text-align: center;
+}
+.testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+}
+.slide {
+    flex: 0 0 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    scroll-snap-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Call to Action */
+.cta {
+    background: linear-gradient(135deg, #000428, #004e92);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.btn-book {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 15px;
+    background: #ff9800;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.btn-book:hover {
+    background: #e68900;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: #bbb;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-company, .mission-vision {
+        flex-direction: column;
+    }
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
