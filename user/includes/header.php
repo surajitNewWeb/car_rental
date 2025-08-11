@@ -20,7 +20,7 @@
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- main css -->
-  <link rel="stylesheet" href="user/assets/css/style.css">
+  <link rel="stylesheet" href="/car_rental/user/assets/css/style.css">
 
 </head>
 
@@ -29,7 +29,7 @@
   <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container header">
       <!-- Logo -->
-      <a class="navbar-brand fw-bold" href="#"><img src="user/assets/images/logo.jpg" alt="logo"></a>
+      <a class="navbar-brand fw-bold" href="#"><img src="/car_rental/user/assets/images/logo.jpg" alt="logo"></a>
 
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -57,10 +57,10 @@
 
         <!-- Right section -->
         <div class="d-flex align-items-center gap-3">
-          <a href="user/pages/signup.php" class="text-decoration-none text-dark">
+          <a href="/car_rental/user/pages/signup.php" class="text-decoration-none text-dark">
             <i class="fa-regular fa-user me-1"></i>Sign -Up
           </a>
-          <a href="user/pages/login.php" class="log text-decoration-none">Log in</a>
+          <a href="/car_rental/user/pages/login.php" class="log text-decoration-none">Log in</a>
         </div>
       </div>
     </div>

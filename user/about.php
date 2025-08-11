@@ -10,8 +10,6 @@
   <title>About Us - Car Rental</title>
   <!-- about css -->
   <link rel="stylesheet" href="assets/css/about.css">
-  <!-- style css -->
-  <link rel="stylesheet" href="assets/css/style.css">
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,17 +217,7 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="cta">
-    <section class="meet-our-team">
-    <div class="heading">
-      <h2>Ready to Ride in Style?</h2>
-    </div>
-    <p>Book your dream car today and enjoy unmatched luxury and comfort.</p>
-    <a href="booking.html" class="btn-book">Book Now</a>
-  </section>
-
-  <!-- footer -->
+  <!-- footer section -->
   <?php include("includes/footer.php"); ?>
 </body>
 

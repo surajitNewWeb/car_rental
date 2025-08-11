@@ -9,8 +9,6 @@
   <title>About Us - Car Rental</title>
   <!-- contact css -->
   <link rel="stylesheet" href="assets/css/contact.css">
-  <!-- style css -->
-  <link rel="stylesheet" href="assets/css/style.css">
   <!-- google fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -20,11 +20,9 @@ font-size: 17px;
 }
 
 .header a img {
-
   height: 58px;
   width: 68px;
   object-fit: cover;
-  transition: 0.5s;
 }
 
 .header a img:hover {
@@ -55,10 +53,6 @@ font-size: 17px;
   margin: 5px 20px;
 }
 
-/*  */
-body{
-   background: linear-gradient(to left, #74ebd5, #acb6e5);
-}
 /* heading section */
 .heading h2 {
   display: flex;
@@ -74,7 +68,6 @@ body{
 }
 
 /* hero section */
-
 section.hero {
   width: 100%;
   background-image: url("../images/hero3.jpg");
