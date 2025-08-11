@@ -1,5 +1,4 @@
 <?php include("includes/header.php"); ?>
-<!-- main css -->
 
 <!DOCTYPE html>
 <html lang="en">

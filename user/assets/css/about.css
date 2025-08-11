@@ -347,7 +347,7 @@ header p {
 
 /* Call to Action */
 .cta {
-  background: linear-gradient(135deg, #0004289d, #3483c7);
+  background: #075284ac;
   color: white;
   text-align: center;
   padding: 60px 20px;

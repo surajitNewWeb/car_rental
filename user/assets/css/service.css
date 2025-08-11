@@ -1,0 +1,254 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "DM Sans", sans-serif;
+      font-style: normal;
+    }
+
+    .booking-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to left, #74ebd5, #acb6e5);
+      color: white;
+      padding: 20px;
+      border-radius: 25px;
+      max-width: 1200px;
+      margin: auto;
+      gap: 30px;
+    }
+
+    .booking-text {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+
+    .booking-text h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .booking-text p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 25px;
+    }
+
+    .booking-text button {
+      background: #ff9800;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking-text button:hover {
+      background: #e68900;
+    }
+
+    .booking-form {
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 15px;
+      flex: 1 1 350px;
+      max-width: 400px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .booking-form h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .booking-form select,
+    .booking-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      background: #f5f5f5;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .booking-form button {
+      background: #ff9800;
+      color: white;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking-form button:hover {
+      background: #e68900;
+    }
+
+
+    /*  */
+    .container {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+    }
+
+    .profile-image img {
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .points {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .point {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .circle {
+      background: #5a2ef4;
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .text {
+      font-size: 1.1rem;
+      max-width: 350px;
+    }
+/* card section */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.car-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}
+
+.car-img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car-details h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.type {
+    font-size: 14px;
+    color: gray;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6c47ff;
+}
+
+.price span {
+    font-size: 12px;
+    color: gray;
+}
+
+.features {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #333;
+}
+
+button {
+    background: #6c47ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #5939cc;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .features {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .booking-text h1 {
+        font-size: 2rem;
+      }
+
+      .booking-text {
+        text-align: center;
+      }
+
+      .booking-form {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .points {
+        align-items: center;
+      }
+    }

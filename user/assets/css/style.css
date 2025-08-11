@@ -55,6 +55,10 @@ font-size: 17px;
   margin: 5px 20px;
 }
 
+/*  */
+body{
+   background: linear-gradient(to left, #74ebd5, #acb6e5);
+}
 /* heading section */
 .heading h2 {
   display: flex;

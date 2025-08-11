@@ -368,3 +368,4 @@
 
   <!-- footer section -->
    <?php include("user/includes/footer.php"); ?>
+   
