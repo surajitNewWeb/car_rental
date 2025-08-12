@@ -1,35 +1,36 @@
 <?php
-$con=mysqli_connect("localhost","root","","car_rental");
-if(isset($_POST['sign'])) 
-{
-    $n=$_POST['name'];
-    $e=$_POST['email'];
-    $p=$_POST['pass'];
+$con = mysqli_connect("localhost", "root", "", "car_rental");
 
-    $ins="INSERT INTO users name=$n, email=$e, password=$p";
-    $con->query($ins);
-    if($con->query($ins)) {
-        echo "submited";
+if (isset($_POST['sign'])) {
+    $n = $_POST['name'];
+    $e = $_POST['email'];
+    $p = $_POST['pass'];
+
+    // Secure query using prepared statement
+    $stmt = $con->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $n, $e, $p);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('✅ Sign up successful!');</script>";
     } else {
-        echo "403 forbiden";
+        echo "<script>alert('❌ Error: Could not sign up');</script>";
     }
+
+    $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Sign Up Form</title>
+<title>Sign Up Form</title>
 <style>
     * {
-        margin: 0;
-        padding: 0;
+        margin: 0; padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
-
     body {
         min-height: 100vh;
         background: linear-gradient(135deg, #1f1c2c, #928dab);
@@ -37,7 +38,6 @@ if(isset($_POST['sign']))
         justify-content: center;
         align-items: center;
     }
-
     .form-container {
         width: 100%;
         max-width: 400px;
@@ -49,25 +49,19 @@ if(isset($_POST['sign']))
         color: #fff;
         animation: fadeIn 1s ease-in-out;
     }
-
     .form-container h2 {
         text-align: center;
         margin-bottom: 20px;
         font-weight: 600;
         letter-spacing: 1px;
     }
-
-    .form-group {
-        margin-bottom: 15px;
-    }
-
+    .form-group { margin-bottom: 15px; }
     .form-group label {
         display: block;
         font-size: 14px;
         margin-bottom: 5px;
         color: #ddd;
     }
-
     .form-group input {
         width: 100%;
         padding: 10px 15px;
@@ -79,12 +73,10 @@ if(isset($_POST['sign']))
         font-size: 14px;
         transition: 0.3s ease;
     }
-
     .form-group input:focus {
         background: rgba(255, 255, 255, 0.3);
         box-shadow: 0 0 5px #00ffd5, 0 0 10px #00ffd5;
     }
-
     .btn {
         width: 100%;
         padding: 10px;
@@ -97,33 +89,25 @@ if(isset($_POST['sign']))
         cursor: pointer;
         transition: 0.3s;
     }
-
     .btn:hover {
         transform: scale(1.05);
         box-shadow: 0 0 10px #00ffd5, 0 0 20px #00aaff;
     }
-
     .form-footer {
         text-align: center;
         margin-top: 15px;
         font-size: 13px;
     }
-
     .form-footer a {
         color: #00ffd5;
         text-decoration: none;
     }
-
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
     }
-
     @media (max-width: 500px) {
-        .form-container {
-            margin: 0 15px;
-            padding: 20px;
-        }
+        .form-container { margin: 0 15px; padding: 20px; }
     }
 </style>
 </head>
@@ -131,14 +115,14 @@ if(isset($_POST['sign']))
 
 <div class="form-container">
     <h2>Create Account</h2>
-    <form id="signupForm" action="login.php" method="post">
+    <form method="post" action="">
         <div class="form-group">
             <label>Full Name</label>
             <input type="text" name="name" placeholder="Enter your name" required>
         </div>
         <div class="form-group">
             <label>Email Address</label>
-            <input type="email"name="email" placeholder="Enter your email" required>
+            <input type="email" name="email" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
             <label>Password</label>
@@ -150,13 +134,6 @@ if(isset($_POST['sign']))
         </div>
     </form>
 </div>
-
-<script>
-    document.getElementById("signupForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevents page reload
-        alert("✅ Sign up successful!"); // Message after clicking button
-    });
-</script>
 
 </body>
 </html>
