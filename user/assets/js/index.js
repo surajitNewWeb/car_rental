@@ -1,3 +1,4 @@
+   
     const counters = document.querySelectorAll('[data-target]');
     const speed = 200; // Lower = faster
 

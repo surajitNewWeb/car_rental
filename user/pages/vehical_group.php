@@ -1,17 +1,12 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "car_rental";
+$con = mysqli_connect("localhost", "root", "", "car_rental");
 
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("DB Connection failed: " . $conn->connect_error);
+if ($con->connect_error) {
+    die("DB Connection failed: " . $con->connect_error);
 }
 
-$sql = "SELECT * FROM cars";
-$result = $conn->query($sql);
+$sel = "SELECT * FROM vehical";
+$result = $con->query($sel);
 ?>
 
 <!DOCTYPE html>
@@ -53,4 +48,4 @@ $result = $conn->query($sql);
     </div>
 </body>
 </html>
-<?php $conn->close(); ?>
+<?php $con->close(); ?>

@@ -1,14 +1,12 @@
 <?php include("includes/header.php"); ?>
 <?php
-// Sample car data (this can come from a database)
-$cars = [
-    ["name" => "Mercedes", "type" => "Sedan", "price" => 25, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 5, "ac" => true, "img" => "car1.png"],
-    ["name" => "Mercedes", "type" => "SUV", "price" => 50, "gearbox" => "Manual", "fuel" => "Diesel", "seats" => 7, "ac" => true, "img" => "car2.png"],
-    ["name" => "Mercedes", "type" => "Hatchback", "price" => 45, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 4, "ac" => true, "img" => "car3.png"],
-    ["name" => "Porsche", "type" => "Sports", "price" => 40, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 2, "ac" => true, "img" => "car4.png"],
-    ["name" => "Toyota", "type" => "SUV", "price" => 35, "gearbox" => "Manual", "fuel" => "Diesel", "seats" => 5, "ac" => true, "img" => "car5.png"],
-    ["name" => "Porsche", "type" => "Sports", "price" => 50, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 2, "ac" => true, "img" => "car6.png"],
-];
+$con = mysqli_connect("localhost", "root", "", "car_rental");
+
+if ($con->connect_error) {
+    die("DB Connection failed: " . $con->connect_error);
+}
+$sel = "SELECT * FROM vehical";
+$result = $con->query($sel);
 ?>
 
 <!DOCTYPE html>
@@ -94,23 +92,23 @@ $cars = [
 
     <div class="card-container">
     <div class="car-grid">
-        <?php foreach ($cars as $car): ?>
+         <?php while($row = $result->fetch_assoc()): ?>
         <div class="car-card">
-            <img src="images/<?php echo $car['img']; ?>" alt="<?php echo $car['name']; ?>">
-            <div class="car-title"><?php echo $car['name']; ?></div>
-            <div class="car-type"><?php echo $car['type']; ?></div>
-            <div class="price">$<?php echo $car['price']; ?>/day</div>
+               <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>">
+            <div class="car-title"><?php echo $row['name']; ?></div>
+            <div class="car-type"><?php echo $row['type']; ?></div>
+            <div class="price">$<?php echo $row['price']; ?>/day</div>
             <div class="specs">
-                <span><i class="fa-solid fa-gears"></i> <?php echo $car['gearbox']; ?></span>
-                <span><i class="fa-solid fa-gas-pump"></i> <?php echo $car['fuel']; ?></span>
-                <span><i class="fa-solid fa-user-group"></i> <?php echo $car['seats']; ?></span>
+                <span><i class="fa-solid fa-gears"></i> <?php echo $row['gearbox']; ?></span>
+                <span><i class="fa-solid fa-gas-pump"></i> <?php echo $row['fuel']; ?></span>
+                <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?></span>
                 <?php if ($car['ac']): ?>
                 <span><i class="fa-solid fa-snowflake"></i> AC</span>
                 <?php endif; ?>
             </div>
             <a href="#" class="btn">View Details</a>
         </div>
-        <?php endforeach; ?>
+         <?php endwhile; ?>
     </div>
 </div>
 

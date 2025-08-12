@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION['un'])){
+  header("location:login.php");
+}
+?>
 <!-- nav bar -->
 <!DOCTYPE html>
 <html lang="en">
@@ -26,10 +32,10 @@
 
 <body>
   <!-- nav-bar -->
-  <nav class="navbar navbar-expand-lg  shadow-sm py-3">
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
     <div class="container header">
       <!-- Logo -->
-      <a class="navbar-brand fw-bold" href="/car_rental/index.php"><img src="/car_rental/user/assets/images/logo.jpg" alt="logo"></a>
+      <a class="navbar-brand fw-bold" href="#"><img src="/car_rental/user/assets/images/logo.jpg" alt="logo"></a>
 
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -40,7 +46,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item dropdown">
-          <li class="nav-item"><a class="nav-link" href="/car_rental/index.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/car_rental/index.php">Car list</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/about.php">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/contact.php">Contact Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/services.php">Services</a></li>
@@ -48,13 +54,20 @@
 
         <!-- Right section -->
         <div class="d-flex align-items-center gap-3">
-          <a href="/car_rental/user/pages/signup.php" class="text-decoration-none text-dark">
-            <i class="fa-regular fa-user me-1"></i>Sign -Up
+          <a href="" class="text-decoration-none text-danger">Welcome
+            <?php echo $_SESSION['un'] ?>
           </a>
-          <a href="/car_rental/user/pages/login.php" class="log text-decoration-none">Log in</a>
+          <a href="logout.php" class="log text-decoration-none" onclick="return confirmLogout()">Logout</a>
         </div>
       </div>
     </div>
   </nav>
 
- 
+  <script>
+    function confirmLogout() {
+      return confirm("Are you sure you want to logout?");
+    }
+  </script>
+</body>
+
+</html>
