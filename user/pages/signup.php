@@ -1,9 +1,27 @@
+<?php
+$con=mysqli_connect("localhost","root","","car_rental");
+if(isset($_POST['sign'])) 
+{
+    $n=$_POST['name'];
+    $e=$_POST['email'];
+    $p=$_POST['pass'];
+
+    $ins="INSERT INTO users name=$n, email=$e, password=$p";
+    $con->query($ins);
+    if($con->query($ins)) {
+        echo "submited";
+    } else {
+        echo "403 forbiden";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unique Sign Up Form</title>
+<title> Sign Up Form</title>
 <style>
     * {
         margin: 0;
@@ -113,24 +131,20 @@
 
 <div class="form-container">
     <h2>Create Account</h2>
-    <form id="signupForm">
+    <form id="signupForm" action="login.php" method="post">
         <div class="form-group">
             <label>Full Name</label>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text" name="name" placeholder="Enter your name" required>
         </div>
         <div class="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="Enter your email" required>
+            <input type="email"name="email" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" placeholder="Create password" required>
+            <input type="password" name="pass" placeholder="Create password" required>
         </div>
-        <div class="form-group">
-            <label>Confirm Password</label>
-            <input type="password" placeholder="Confirm password" required>
-        </div>
-        <button class="btn" type="submit">Sign Up</button>
+        <button class="btn" type="submit" name="sign">Sign Up</button>
         <div class="form-footer">
             Already have an account? <a href="login.php">Login</a>
         </div>

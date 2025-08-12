@@ -44,15 +44,6 @@
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/about.php">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/contact.php">Contact Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/services.php">Services</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
-              Pages
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Page 1</a></li>
-              <li><a class="dropdown-item" href="#">Page 2</a></li>
-            </ul>
-          </li>
         </ul>
 
         <!-- Right section -->

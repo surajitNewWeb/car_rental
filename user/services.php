@@ -1,4 +1,15 @@
 <?php include("includes/header.php"); ?>
+<?php
+// Sample car data (this can come from a database)
+$cars = [
+    ["name" => "Mercedes", "type" => "Sedan", "price" => 25, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 5, "ac" => true, "img" => "car1.png"],
+    ["name" => "Mercedes", "type" => "SUV", "price" => 50, "gearbox" => "Manual", "fuel" => "Diesel", "seats" => 7, "ac" => true, "img" => "car2.png"],
+    ["name" => "Mercedes", "type" => "Hatchback", "price" => 45, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 4, "ac" => true, "img" => "car3.png"],
+    ["name" => "Porsche", "type" => "Sports", "price" => 40, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 2, "ac" => true, "img" => "car4.png"],
+    ["name" => "Toyota", "type" => "SUV", "price" => 35, "gearbox" => "Manual", "fuel" => "Diesel", "seats" => 5, "ac" => true, "img" => "car5.png"],
+    ["name" => "Porsche", "type" => "Sports", "price" => 50, "gearbox" => "Automatic", "fuel" => "Petrol", "seats" => 2, "ac" => true, "img" => "car6.png"],
+];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vehicle Selection</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- service css -->
   <link rel="stylesheet" href="assets/css/service.css">
 </head>
 
@@ -19,7 +31,7 @@
     <div class="text-content">
       <h1>Experience the road<br>like never before</h1>
       <p>Aliquam adipiscing velit semper mobil. Purus non eu cursus porttitor tristique et gravida. Quis nunc interdum gravida ullamcorper.</p>
-      <a href="#" class="btn">View all cars</a>
+      <a href="#" class="view-btn">View all cars</a>
     </div>
 
     <!-- Right booking form -->
@@ -43,7 +55,7 @@
       </select>
       <input type="date" placeholder="Rental date">
       <input type="date" placeholder="Return date">
-      <button class="btn book-btn">Book now</button>
+      <button class="book-btn">Book now</button>
     </div>
   </div>
 </section>
@@ -79,126 +91,28 @@
     </div>
 
     <!-- Cards Grid -->
-    <div class="grid">
-      <!-- Card Example -->
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$35 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
 
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$50 <small>/ day</small></span>
+    <div class="card-container">
+    <div class="car-grid">
+        <?php foreach ($cars as $car): ?>
+        <div class="car-card">
+            <img src="images/<?php echo $car['img']; ?>" alt="<?php echo $car['name']; ?>">
+            <div class="car-title"><?php echo $car['name']; ?></div>
+            <div class="car-type"><?php echo $car['type']; ?></div>
+            <div class="price">$<?php echo $car['price']; ?>/day</div>
+            <div class="specs">
+                <span><i class="fa-solid fa-gears"></i> <?php echo $car['gearbox']; ?></span>
+                <span><i class="fa-solid fa-gas-pump"></i> <?php echo $car['fuel']; ?></span>
+                <span><i class="fa-solid fa-user-group"></i> <?php echo $car['seats']; ?></span>
+                <?php if ($car['ac']): ?>
+                <span><i class="fa-solid fa-snowflake"></i> AC</span>
+                <?php endif; ?>
+            </div>
+            <a href="#" class="btn">View Details</a>
         </div>
-        <div class="type">Sport</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-      <div class="card">
-        <div class="car-img"></div>
-        <div class="card-header">
-          <h3>Mercedes</h3>
-          <span class="price">$45 <small>/ day</small></span>
-        </div>
-        <div class="type">Sedan</div>
-        <div class="features">
-          <span>⚙️ Automat</span>
-          <span>⛽ PB 95</span>
-          <span>❄️ AC</span>
-        </div>
-        <button class="btn">View Details</button>
-      </div>
-
-
-      <!-- Add more cards as needed -->
+        <?php endforeach; ?>
     </div>
+</div>
 
     <!-- Brand Logos -->
     <div class="brands">
