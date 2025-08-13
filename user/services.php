@@ -7,7 +7,7 @@ if ($con->connect_error) {
 $sel = "SELECT * FROM cars";
 $result = $con->query($sel);
 ?>
-
+<?php include("includes/topbar.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,8 +96,8 @@ $result = $con->query($sel);
                <img src="../admin/assets/images/<?php echo $row['image']; ?> " alt="<?php echo $row['name']; ?>">
             <div class="car-title"><?php echo $row['name']; ?></div>
             <div class="car-type"><?php echo $row['type']; ?></div>
-            <div class="price">$<?php echo $row['price']; ?>/day</div>
-            <div class="specs">
+            <div class="car-price">$<?php echo $row['price']; ?>/day</div>
+            <div class="car-specs">
                 <span><i class="fa-solid fa-gears"></i> <?php echo $row['gearbox']; ?></span>
                 <span><i class="fa-solid fa-gas-pump"></i> <?php echo $row['fuel']; ?></span>
                 <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?></span>
@@ -120,7 +120,7 @@ $result = $con->query($sel);
       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Audi_logo_detail.svg" alt="Audi">
     </div>
   </div>
-
+<?php include("includes/footer.php"); ?>
 </body>
 
 </html>

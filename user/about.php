@@ -1,218 +1,191 @@
+<?php include("includes/topbar.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - Car Rental</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- about css -->
   <link rel="stylesheet" href="assets/css/about.css">
-  <!-- google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-    rel="stylesheet">
-  <!-- bootstrap css -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- font aswame -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
 
-  <!-- Header Section -->
-<header>
-  <h1>About Car Rental</h1>
-    <p>Experience luxury, comfort, and convenience with our premium car rental services. We are committed to providing top-quality vehicles at affordable rates, making your journey unforgettable.</p>
-</header>
-
-<!-- About Company Section -->
-<section class="about-company">
-    <div class="about-content">
-        <div class="about-image">
-            <img src="assets/images/car1.jpg" alt="About Company">
-        </div>
-        <div class="about-text">
-            <div class="heading">
-      <h2>ABOUT OUR COMPANY</h2>
+  <!-- Hero Section -->
+  <section class="hero-fullwidth">
+    <div class="hero-content">
+      <h1>About CarRental</h1>
+      <p>Providing premium vehicles, exceptional service, and unforgettable journeys. Our mission is to make every trip
+        smooth, safe, and luxurious.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Explore Fleet</a>
+        <a href="#" class="btn-secondary">Contact Us</a>
+      </div>
     </div>
-            <p>At <strong>Car Rental</strong>, we pride ourselves on providing top-quality vehicles for every journey. 
-               From luxury sedans to family SUVs, we ensure our fleet is well-maintained, stylish, and ready for adventure. 
-               Our commitment is to make your travel experience smooth, affordable, and enjoyable.</p>
-            
-            <div class="highlights">
-                <div class="highlight">
-                    <i class="fas fa-car"></i>
-                    <h4>Wide Vehicle Range</h4>
-                </div>
-                <div class="highlight">
-                    <i class="fas fa-dollar-sign"></i>
-                    <h4>Affordable Rates</h4>
-                </div>
-                <div class="highlight">
-                    <i class="fas fa-headset"></i>
-                    <h4>24/7 Support</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+  </section>
 
- <!-- Why Choose Us -->
-  <section class="why-choose">
+  <!-- About Us -->
+  <section>
     <div class="heading">
-      <h2>WHY CHHOSE US</h2>
+      <h2>About Us</h2>
     </div>
-    <div class="choose-grid">
-      <div class="choose-card">
-        <img src="assets/images/car.gif" alt="Luxury & Comfort">
-        <h3>Luxury & Comfort</h3>
-        <p>Enjoy the latest models with plush interiors and advanced features.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;">
+      <div style="flex:1; min-width: 280px;">
+        <p>
+          At CarRental, we offer top-quality rental vehicles with exceptional service, ensuring comfort, safety, and
+          affordability for every journey.
+        </p>
       </div>
-      <div class="choose-card">
-        <img src="assets/images/rating.gif" alt="Affordable Rates">
-        <h3>Affordable Rates</h3>
-        <p>Premium rides at prices that fit your budget.</p>
-      </div>
-      <div class="choose-card">
-        <img src="assets/images/booking.gif" alt="Easy Booking">
-        <h3>Easy Booking</h3>
-        <p>Reserve your ride in just a few clicks, anytime, anywhere.</p>
-      </div>
-      <div class="choose-card">
-        <img src="assets/images/24-hour-support.gif" alt="24/7 Assistance">
-        <h3>24/7 Assistance</h3>
-        <p>Our dedicated team is always ready to help, day or night.</p>
+      <div style="flex:1; min-width: 280px;">
+        <img src="assets/images/contact.jpg" alt="About CarRental"
+          style="width:100%; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
       </div>
     </div>
   </section>
 
-
-  <!-- Our Mission & Vision Section -->
-  <section class="mission-vision-section">
-    <div class="mission">
-      <div class="mission-image">
-        <img src="assets/images/car1.jpg" alt="Our Mission">
-      </div>
-      <div class="mission-text">
-        <div class="heading">
-          <h2>OUR MISSION</h2>
-        </div>
-        <p>At <strong>DriveLux Rentals</strong>, our mission is to deliver premium, reliable, and affordable car rental
-          services that make every journey unforgettable. We aim to provide comfort, safety, and style for all your
-          travel needs.</p>
-      </div>
-    </div>
-
-    <div class="vision">
-      <div class="vision-image">
-        <img src="assets/images/car3.jpg" alt="Our Vision">
-      </div>
-      <div class="vision-text">
-        <div class="heading">
-          <h2>OUR VISSION</h2>
-        </div>
-        <p>Our vision is to be the world’s most trusted and innovative car rental brand, known for exceptional service
-          and cutting-edge solutions that redefine the travel experience.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Meet Our Team Section -->
-  <section class="meet-our-team">
+  <!-- Our Mission Section -->
+  <section>
     <div class="heading">
-      <h2>MEET OUR TEAM</h2>
+      <h2>Our Mission</h2>
     </div>
-    <p class="team-intro">Our dedicated professionals work tirelessly to make your journey smooth and unforgettable.</p>
-
-    <div class="team-grid">
-      <!-- Team Member 1 -->
-      <div class="team-card">
-        <div class="team-img">
-          <img src="assets/images/TEAM.JPG" alt="John Carter">
-        </div>
-        <h3>John Carter</h3>
-        <p>CEO & Founder</p>
-        <div class="team-socials">
-          <a href="#"><i class="fa-brands fa-facebook" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-linkedin" style="color: #035a89; font-size: 30px;"></i></a>
-        </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: center;">
+      <div style="flex:1; min-width: 280px;">
+        <img src="assets/images/about-us.jpg" alt="Our Mission"
+          style="width:100%; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
       </div>
-
-      <!-- Team Member 2 -->
-      <div class="team-card">
-        <div class="team-img">
-          <img src="assets/images/TEAM.JPG" alt="Sarah Williams">
-        </div>
-        <h3>Sarah Williams</h3>
-        <p>Operations Manager</p>
-        <div class="team-socials">
-      <a href="#"><i class="fa-brands fa-facebook" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-linkedin" style="color: #035a89; font-size: 30px;"></i></a>
-        </div>
-      </div>
-
-      <!-- Team Member 3 -->
-      <div class="team-card">
-        <div class="team-img">
-          <img src="assets/images/TEAM.JPG" alt="David Smith">
-        </div>
-        <h3>David Smith</h3>
-        <p>Customer Support Head</p>
-        <div class="team-socials">
-     <a href="#"><i class="fa-brands fa-facebook" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram" style="color: #035a89;font-size: 30px;"></i></a>
-          <a href="#"><i class="fa-brands fa-linkedin" style="color: #035a89; font-size: 30px;"></i></a>
-        </div>
+      <div style="flex:1; min-width: 280px;">
+        <p>
+          Our mission is to make premium travel experiences accessible for everyone. Whether it’s a short weekend
+          getaway or a long road trip, we ensure your journey is memorable, affordable, and stress-free.
+        </p>
       </div>
     </div>
   </section>
 
+  <!-- Fleet Showcase -->
+  <section>
+    <div class="heading">
+      <h2>Our Fleet</h2>
+    </div>
 
-  <!-- Customer Ratings & Feedback -->
-  <section class="customer-feedback">
-    <h2>What Our Customers Think</h2>
-    <p class="feedback-intro">Real experiences from our valued customers who trust DriveLux Rentals.</p>
+    <div class="fleet-container">
 
-    <div class="feedback-grid">
-      <!-- Feedback Card 1 -->
-      <div class="feedback-card">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer Photo">
-        <h3>Priya Sharma</h3>
-        <div class="stars">
-          ★★★★☆
+      <div class="fleet-card">
+        <img src="assets/images/ranger-black.jpg" alt="Ranger Black">
+        <div class="car-title">Luxury Sedans</div>
+        <div class="car-type">SUV</div>
+        <div class="car-specs">
+          <span><i class="fa-solid fa-gears"></i> Automatic</span>
+          <span><i class="fa-solid fa-gas-pump"></i> Petrol</< /span>
+            <span><i class="fa-solid fa-user-group"></i> 5 Seats</span>
+            <span><i class="fa-solid fa-snowflake"></i> AC</span< /span>
         </div>
-        <p>"The booking process was so easy and the car was in excellent condition. Highly recommended!"</p>
+        <a href="#" class="view-btn">View Details</a>
       </div>
 
-      <!-- Feedback Card 2 -->
+      <div class="fleet-card">
+        <img src="assets/images/lamborgini.jpg" alt="Ranger Black">
+        <div class="car-title">Luxury Sedans</div>
+        <div class="car-type">SUV</div>
+        <div class="car-specs">
+          <span><i class="fa-solid fa-gears"></i> Automatic</span>
+          <span><i class="fa-solid fa-gas-pump"></i> Petrol</< /span>
+            <span><i class="fa-solid fa-user-group"></i> 5 Seats</span>
+            <span><i class="fa-solid fa-snowflake"></i> AC</span< /span>
+        </div>
+        <a href="#" class="view-btn">View Details</a>
+      </div>
+
+      <div class="fleet-card">
+        <img src="assets/images/marcedes-benchC.jpg" alt="Ranger Black">
+        <div class="car-title">Luxury Sedans</div>
+        <div class="car-type">SUV</div>
+        <div class="car-specs">
+          <span><i class="fa-solid fa-gears"></i> Automatic</span>
+          <span><i class="fa-solid fa-gas-pump"></i> Petrol</< /span>
+            <span><i class="fa-solid fa-user-group"></i> 5 Seats</span>
+            <span><i class="fa-solid fa-snowflake"></i> AC</span< /span>
+        </div>
+        <a href="#" class="view-btn">View Details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section>
+    <div class="heading">
+      <h2>Why Choose Us</h2>
+    </div>
+    <div class="choose-container">
+      <div class="choose-card">
+        <i class="fas fa-car fa-2x" style="color: var(--accent);"></i>
+        <h3>Wide Range of Vehicles</h3>
+        <p>From economy to luxury cars, we have the perfect ride for every occasion.</p>
+      </div>
+      <div class="choose-card">
+        <i class="fas fa-hand-holding-usd fa-2x" style="color: var(--accent);"></i>
+        <h3>Affordable Prices</h3>
+        <p>Competitive rates with no hidden charges.</p>
+      </div>
+      <div class="choose-card">
+        <i class="fas fa-headset fa-2x" style="color: var(--accent);"></i>
+        <h3>24/7 Customer Support</h3>
+        <p>We’re always here to help you with your booking and travel needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback -->
+  <section>
+    <div class="heading">
+      <h2>Customer Feedback</h2>
+    </div>
+    <div class="feedback-container">
       <div class="feedback-card">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer Photo">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+        <h3>Sneha Patel</h3>
+        <div class="stars">★★★★★</div>
+        <p>Excellent service and clean cars. Highly recommend!</p>
+      </div>
+      <div class="feedback-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
         <h3>Rahul Verma</h3>
-        <div class="stars">
-          ★★★★★
-        </div>
-        <p>"Fantastic service and very professional staff. The best rental experience I've had so far."</p>
+        <div class="stars">★★★★★</div>
+        <p>Fantastic service and very friendly staff. Highly recommended!</p>
       </div>
-
-      <!-- Feedback Card 3 -->
       <div class="feedback-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Customer Photo">
-        <h3>Emily Johnson</h3>
-        <div class="stars">
-          ★★★★☆
-        </div>
-        <p>"Smooth process from start to finish. Will definitely book with them again for my next trip."</p>
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="">
+        <h3>Ananya Singh</h3>
+        <div class="stars">★★★★☆</div>
+        <p>Great experience overall. The pickup and drop-off process was smooth.</p>
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <?php include("includes/footer.php"); ?>
+
+  <script>
+    // Scroll animations
+    const animatedEls = document.querySelectorAll('.hero-inner, .choose-card, .team-card, .feedback-card, .fleet-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    animatedEls.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 
 </html>

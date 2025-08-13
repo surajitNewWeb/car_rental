@@ -1,3 +1,4 @@
+<?php include("includes/topbar.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +65,7 @@
       <button type="submit">Send Message</button>
     </form>
   </section>
+  <?php include("includes/footer.php"); ?>
 </body>
 
 </html>
