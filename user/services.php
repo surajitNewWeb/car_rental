@@ -1,11 +1,10 @@
-<?php include("includes/header.php"); ?>
 <?php
 $con = mysqli_connect("localhost", "root", "", "car_rental");
 
 if ($con->connect_error) {
     die("DB Connection failed: " . $con->connect_error);
 }
-$sel = "SELECT * FROM vehical";
+$sel = "SELECT * FROM cars";
 $result = $con->query($sel);
 ?>
 
@@ -94,7 +93,7 @@ $result = $con->query($sel);
     <div class="car-grid">
          <?php while($row = $result->fetch_assoc()): ?>
         <div class="car-card">
-               <img src="images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>">
+               <img src="../admin/assets/images/<?php echo $row['image']; ?> " alt="<?php echo $row['name']; ?>">
             <div class="car-title"><?php echo $row['name']; ?></div>
             <div class="car-type"><?php echo $row['type']; ?></div>
             <div class="price">$<?php echo $row['price']; ?>/day</div>
@@ -102,7 +101,7 @@ $result = $con->query($sel);
                 <span><i class="fa-solid fa-gears"></i> <?php echo $row['gearbox']; ?></span>
                 <span><i class="fa-solid fa-gas-pump"></i> <?php echo $row['fuel']; ?></span>
                 <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?></span>
-                <?php if ($car['ac']): ?>
+                <?php if ($row['ac']): ?>
                 <span><i class="fa-solid fa-snowflake"></i> AC</span>
                 <?php endif; ?>
             </div>
@@ -121,7 +120,7 @@ $result = $con->query($sel);
       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Audi_logo_detail.svg" alt="Audi">
     </div>
   </div>
-<?php include("includes/footer.php"); ?>
+
 </body>
 
 </html>

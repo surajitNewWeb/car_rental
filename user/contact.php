@@ -1,5 +1,3 @@
-<?php include("includes/header.php"); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,8 +64,6 @@
       <button type="submit">Send Message</button>
     </form>
   </section>
-  <!-- footer section -->
-  <?php include("includes/footer.php"); ?>
 </body>
 
 </html>

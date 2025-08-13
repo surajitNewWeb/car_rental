@@ -1,6 +1,3 @@
-<?php include("includes/header.php"); ?>
-<!-- main css -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,9 +213,6 @@
       </div>
     </div>
   </section>
-
-  <!-- footer section -->
-  <?php include("includes/footer.php"); ?>
 </body>
 
 </html>

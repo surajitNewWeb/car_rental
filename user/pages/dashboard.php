@@ -46,16 +46,17 @@ if(!isset($_SESSION['un'])){
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item dropdown">
-          <li class="nav-item"><a class="nav-link" href="/car_rental/index.php">Car list</a></li>
-          <li class="nav-item"><a class="nav-link" href="/car_rental/user/about.php">About Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="/car_rental/user/contact.php">Contact Us</a></li>
-          <li class="nav-item"><a class="nav-link" href="/car_rental/user/services.php">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="/user/pages/vehical_group.php">User-Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Brows Car</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Book Car</a></li>
+          <li class="nav-item"><a class="nav-link" href="">Booking Details</a></li>
         </ul>
 
         <!-- Right section -->
         <div class="d-flex align-items-center gap-3">
           <a href="" class="text-decoration-none text-danger">Welcome
             <?php echo $_SESSION['un'] ?>
+            <img src="../assets/images/user.png" alt="user-image"style="  height: 40px;width: 40px; object-fit: cover;border-radious:50%">
           </a>
           <a href="logout.php" class="log text-decoration-none" onclick="return confirmLogout()">Logout</a>
         </div>
