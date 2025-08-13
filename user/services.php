@@ -1,126 +1,269 @@
-<?php
-$con = mysqli_connect("localhost", "root", "", "car_rental");
-
-if ($con->connect_error) {
-    die("DB Connection failed: " . $con->connect_error);
-}
-$sel = "SELECT * FROM cars";
-$result = $con->query($sel);
-?>
 <?php include("includes/topbar.php"); ?>
+<?php include("config/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vehicle Selection</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DriveEasy Rentals — Services</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <!-- service css -->
   <link rel="stylesheet" href="assets/css/service.css">
 </head>
 
 <body>
-  <!--  -->
-<section class="service_hero">
-  <div class="service_hero-content">
-    <!-- Left text part -->
-    <div class="text-content">
-      <h1>Experience the road<br>like never before</h1>
-      <p>Aliquam adipiscing velit semper mobil. Purus non eu cursus porttitor tristique et gravida. Quis nunc interdum gravida ullamcorper.</p>
-      <a href="#" class="view-btn">View all cars</a>
-    </div>
-
-    <!-- Right booking form -->
-    <div class="booking-form">
-      <h3>Book your car</h3>
-      <select>
-        <option>Car type</option>
-        <option>SUV</option>
-        <option>Sedan</option>
-        <option>Hatchback</option>
-      </select>
-      <select>
-        <option>Place of rental</option>
-        <option>New York</option>
-        <option>Los Angeles</option>
-      </select>
-      <select>
-        <option>Place of return</option>
-        <option>New York</option>
-        <option>Los Angeles</option>
-      </select>
-      <input type="date" placeholder="Rental date">
-      <input type="date" placeholder="Return date">
-      <button class="book-btn">Book now</button>
-    </div>
-  </div>
-</section>
-  <!--  -->
-  <section class="features-section">
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/000000/marker.png" alt="Availability">
-      <h3>Availability</h3>
-      <p>Diam tincidunt tincidunt erat at semper fermentum. Id ultricies quis.</p>
-    </div>
-
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/000000/car.png" alt="Comfort">
-      <h3>Comfort</h3>
-      <p>Gravida auctor fermentum morbi vulputate ac egestas orci.</p>
-    </div>
-
-    <div class="feature">
-      <img src="https://img.icons8.com/ios-filled/50/000000/wallet.png" alt="Savings">
-      <h3>Savings</h3>
-      <p>Pretium convallis id diam sed commodo vestibulum lobortis.</p>
+  <!-- HERO -->
+  <section class="service_hero">
+    <div class="wrap">
+      <div>
+        <span class="badge">Premium Experience</span>
+        <h1>Luxury Car Rentals, Chauffeur Service & Bespoke Travel</h1>
+        <p>Arrive with presence. Choose from our curated fleet of luxury sedans, SUVs and exotics — backed by
+          white-glove service, flexible plans and 24×7 support.</p>
+        <div class="cta-row">
+          <button class="btn btn-gold"><i class="fa-solid fa-car"></i> Explore Fleet</button>
+          <button class="btn btn-ghost"><i class="fa-solid fa-headset"></i> Talk to Concierge</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="row"><strong>Today’s Spotlight</strong> <span class="badge">New Arrival</span></div>
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
+          alt="Spotlight Car" style="border-radius:12px;height:220px;object-fit:cover;">
+        <div class="row">
+          <div>Mercedes S-Class 2024</div>
+          <div class="price">$259/day</div>
+        </div>
+        <small style="color:var(--muted)">Complimentary airport delivery • Free cancellation within 24h</small>
+      </div>
     </div>
   </section>
-  <!--  -->
-  <div class="service_container">
 
-    <!-- choose the car -->
-    <div class="section-header">
-      <h2>Choose the car that<br>suits you</h2>
-      <a href="#" class="view-all">
-        View All <span>&#8594;</span>
-      </a>
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <h2>What We Offer</h2>
+        <p>Crafted for business, leisure and life’s biggest moments. Pick a service, we’ll perfect the details.</p>
+      </div>
+      <div class="services-grid">
+
+        <article class="service-card"><i class="fa-solid fa-heart"></i>
+          <h3>Wedding & VIP</h3>
+          <p>Ribboning, décor & on-site coordinator included.</p>
+        </article>
+        <article class="service-card"><i class="fa-solid fa-map-location-dot"></i>
+          <h3>Custom Tours</h3>
+          <p>City highlights, wine routes or coast drives—your pace.</p>
+        </article>
+        <article class="service-card"><i class="fa-solid fa-id-card"></i>
+          <h3>Self-Drive</h3>
+          <p>Low deposit, quick KYC, unlimited km options.</p>
+        </article>
+        <article class="service-card"><i class="fa-solid fa-shield-halved"></i>
+          <h3>All-Risk Cover</h3>
+          <p>Full insurance & 24×7 roadside assistance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLEET -->
+  <div class="contain">
+    <div class="heading">
+      <h2>Our Luxury Fleet</h2>
+      <p>Handpicked models with impeccable maintenance and premium interiors.</p>
     </div>
 
-    <!-- Cards Grid -->
-
-    <div class="card-container">
-    <div class="car-grid">
-         <?php while($row = $result->fetch_assoc()): ?>
-        <div class="car-card">
-               <img src="../admin/assets/images/<?php echo $row['image']; ?> " alt="<?php echo $row['name']; ?>">
-            <div class="car-title"><?php echo $row['name']; ?></div>
-            <div class="car-type"><?php echo $row['type']; ?></div>
-            <div class="car-price">$<?php echo $row['price']; ?>/day</div>
-            <div class="car-specs">
-                <span><i class="fa-solid fa-gears"></i> <?php echo $row['gearbox']; ?></span>
-                <span><i class="fa-solid fa-gas-pump"></i> <?php echo $row['fuel']; ?></span>
-                <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?></span>
-                <?php if ($row['ac']): ?>
-                <span><i class="fa-solid fa-snowflake"></i> AC</span>
-                <?php endif; ?>
+    <section class="car-section">
+      <div class="car-grid">
+        <?php
+    $sql = "SELECT * FROM cars";
+    $result = $con->query($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo '
+            <div class="car-card">
+              <div class="car-img">
+                <span class="badge '.$row['badge'].'">'.$row['badge'].'</span>
+                <img src="'.$row['image'].'" alt="'.$row['name'].'">
+              </div>
+              <div class="car-info">
+                <h3>'.$row['name'].'</h3>
+                <div class="car-meta">
+                  <span><i class="fa-solid fa-user-group"></i> '.$row['seats'].'</span>
+                  <span><i class="fa-solid fa-gas-pump"></i> '.$row['fuel'].'</span>
+                  <span><i class="fa-solid fa-gear"></i> '.$row['transmission'].'</span>
+                </div>
+                <div class="price">$'.$row['price'].'/day</div>
+                <div class="car-buttons">
+                  <button class="btn yellow view-details" 
+                    data-name="'.$row['name'].'" 
+                    data-price="$'.$row['price'].'/day" 
+                    data-features="'.$row['features'].'" 
+                    data-description="'.$row['description'].'" 
+                    data-image="'.$row['image'].'">View Details</button>
+                  <button class="btn outline">Add to Wishlist</button>
+                </div>
+              </div>
             </div>
-            <a href="#" class="btn">View Details</a>
-        </div>
-         <?php endwhile; ?>
-    </div>
-</div>
+            ';
+        }
+     }
+     ?>
+      </div>
+    </section>
+  </div>
 
-    <!-- Brand Logos -->
-    <div class="brands">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_logo.png" alt="Toyota">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Mercedes_logo.svg" alt="Mercedes">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Jeep_logo.svg" alt="Jeep">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Audi_logo_detail.svg" alt="Audi">
+  <!-- Modal -->
+<div class="modal-overlay" style="display:none;">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-body">
+      <div class="modal-left">
+        <img id="modal-image" src="" alt="">
+      </div>
+      <div class="modal-right">
+        <h2 id="modal-title"></h2>
+        <div class="modal-price" id="modal-price"></div>
+        <div class="modal-meta" id="modal-features"></div>
+        <div class="modal-description" id="modal-description"></div>
+        <div class="modal-buttons">
+          <button class="btn yellow">Book Now</button>
+          <button class="btn outline"><i class="fa-solid fa-share"></i> Share</button>
+        </div>
+      </div>
     </div>
   </div>
-<?php include("includes/footer.php"); ?>
+</div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <h2>How It Works</h2>
+        <p>Three simple steps and you’re on the road.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Select</h3>
+          <p>Pick your vehicle, dates and add-ons.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Verify</h3>
+          <p>Quick KYC & secure payment. Fully encrypted.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Drive</h3>
+          <p>Doorstep delivery or airport pickup. Enjoy the ride.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="section" style="padding-top:24px">
+    <div class="container">
+      <div class="heading">
+        <h2>Special Offers</h2>
+        <p>Seasonal advantages for members & early bookings.</p>
+      </div>
+      <div class="offers">
+        <article class="offer">
+          <h3>Weekend Escape</h3>
+          <p>Fri–Mon bundle with 15% off + free add-on driver.</p>
+          <div class="badge">Limited</div>
+        </article>
+        <article class="offer">
+          <h3>Early Bird</h3>
+          <p>Book 14+ days ahead and save up to 20%.</p>
+        </article>
+        <article class="offer">
+          <h3>Long Term</h3>
+          <p>Monthly contracts with concierge maintenance included.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="heading">
+        <h2>Clients Love Us</h2>
+        <p>Rated 4.9/5 by discerning travelers and executives.</p>
+      </div>
+      <div class="testi-grid">
+        <article class="testi">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          “Pristine cars and seamless airport pickup. Felt like a private service.”
+          <div class="who">
+            <span class="avatar"><img
+                src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=200&auto=format&fit=crop"
+                alt=""></span>
+            <div><strong>Emily R.</strong>
+              <div style="color:var(--muted);font-size:.9rem">Los Angeles</div>
+            </div>
+          </div>
+        </article>
+        <article class="testi">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          “The S-Class was immaculate. Concierge handled everything.”
+          <div class="who">
+            <span class="avatar"><img
+                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=200&auto=format&fit=crop"
+                alt=""></span>
+            <div><strong>Daniel M.</strong>
+              <div style="color:var(--muted);font-size:.9rem">Miami</div>
+            </div>
+          </div>
+        </article>
+        <article class="testi">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          “Booked for our wedding—spectacular arrival and support on the day.”
+          <div class="who">
+            <span class="avatar"><img
+                src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?q=80&w=200&auto=format&fit=crop"
+                alt=""></span>
+            <div><strong>Sophia K.</strong>
+              <div style="color:var(--muted);font-size:.9rem">New York</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="section" style="padding-top:24px">
+    <div class="container">
+      <div class="heading">
+        <h2>Trusted Partners</h2>
+        <p>We collaborate with the world’s leading brands & networks.</p>
+      </div>
+      <div class="trustbar">
+        <img src="assets/images/amex.png" alt="Amex" style="width:200;height: 60;">
+        <img src="assets/images/visa.jpg" alt="Visa" style="width:200;height: 60;">
+        <img src="assets/images/mastyercard.jpg" alt="Mastercard" style="width:200;height: 60;">
+        <img src="assets/images/hertz.jpg" alt="Hertz" style="width:200;height: 60;">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div>
+      <strong style="font-size:1.1rem">Ready to elevate your next journey?</strong>
+      <div style="opacity:.8">Premium cars, concierge care, flexible plans.</div>
+    </div>
+    <a href="#">Get a Quote</a>
+  </div>
+  <?php include("includes/footer.php"); ?>
+  <script src="assets/js/service.js"></script>
 </body>
 
 </html>

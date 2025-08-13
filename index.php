@@ -60,7 +60,6 @@
     <div class="cat-item"><img src="user/assets/images/SVG (4).png" alt="Hybrid"><p>Hybrid</p></div>
     <div class="cat-item"><img src="user/assets/images/SVG (5).png" alt="Convertible"><p>Convertible</p></div>
     <div class="cat-item"><img src="user/assets/images/SVG (6).png" alt="Van"><p>Van</p></div>
-    <div class="cat-item"><img src="user/assets/images/SVG (7).png" alt="Truck"><p>Truck</p></div>
     <div class="cat-item"><img src="user/assets/images/SVG (8).png" alt="Electric"><p>Electric</p></div>
   </section>
 

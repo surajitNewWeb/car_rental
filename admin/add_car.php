@@ -6,13 +6,13 @@ if (!$con) {
 }
 if (isset($_POST['add'])) {
     $name = $_POST['name'];
-    $type = $_POST['type'];
-    $price = $_POST['price'];
-    $gearbox = $_POST['gearbox'];
-    $fuel = $_POST['fuel'];
-    $door = $_POST['door'];
+    $badge = $_POST['badge'];
     $seats = $_POST['seats'];
-    $ac = $_POST['ac'];
+    $fuel = $_POST['fuel'];
+    $transmission = $_POST['transmission'];
+    $price = $_POST['price'];
+    $features = $_POST['features'];
+    $description = $_POST['Description'];
 
     // Image upload logic
     $buf=$_FILES['image']['tmp_name'];
@@ -20,7 +20,7 @@ if (isset($_POST['add'])) {
     move_uploaded_file($buf,"assets/images/".$fn);
 
     // Insert car details into the database
-    $ins= "INSERT INTO cars SET name='$name', type='$type', price='$price', image='$fn', gearbox='$gearbox', fuel='$fuel', door='$door', seats='$seats', ac='$ac'";
+    $ins= "INSERT INTO cars SET name='$name', image='$fn',badge='$badge',seats='$seats', fuel='$fuel', price='$price',transmission='$transmission', features='$features',  description='$description'";
     if ($con->query($ins) === TRUE) {
         echo "<script>alert('Car added successfully!');</script>";
         header("location:view_car.php");
@@ -81,7 +81,7 @@ if (isset($_POST['add'])) {
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Add Car</h1>
 
-          <div class="form-container">
+          <div class="form-container small">
             <h2>Add New Car</h2>
             <form action="#" method="POST" enctype="multipart/form-data">
               <div class="form-row">
@@ -89,56 +89,62 @@ if (isset($_POST['add'])) {
                   <label for="name">Car Name</label>
                   <input type="text" id="name" name="name" required>
                 </div>
-                <div class="form-group">
-                  <label for="type">Type</label>
-                  <input type="text" id="type" name="type" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="price">Price ($/day)</label>
-                  <input type="number" id="price" name="price" required>
-                </div>
+
                 <div class="form-group">
                   <label for="image">Car Image</label>
                   <input type="file" id="image" name="image" accept="image/*" required>
                 </div>
               </div>
+
               <div class="form-row">
-                <div class="form-group">
-                  <label for="gearbox">Gearbox</label>
-                  <select id="gearbox" name="gearbox" required>
-                    <option value="Manual">Manual</option>
-                    <option value="Automatic">Automatic</option>
+                 <div class="form-group">
+                  <label for="transmission">Car Badge</label>
+                  <select id="badge" name="badge" required>
+                    <option value="New">New</option>
+                    <option value="Best Seller">Best Seller</option>
                   </select>
-                </div>
-                <div class="form-group">
-                  <label for="fuel">Fuel Capacity (L)</label>
-                  <input type="number" id="fuel" name="fuel" required>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="door">Number of Doors</label>
-                  <input type="number" id="door" name="door" required>
                 </div>
                 <div class="form-group">
                   <label for="seats">Seats</label>
                   <input type="number" id="seats" name="seats" required>
                 </div>
               </div>
+
               <div class="form-row">
                 <div class="form-group">
-                  <label for="ac">Air Conditioning</label>
-                  <select id="ac" name="ac" required>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                  <label for="fuel">Fuel</label>
+                  <input type="text" id="fuel" name="fuel" placeholder="Diesel / Petrol" required>
+                </div>
+                <div class="form-group">
+                  <label for="transmission">Transmission</label>
+                  <select id="transmission" name="transmission" required>
+                    <option value="Auto">Auto</option>
+                    <option value="Manual">Manual</option>
                   </select>
                 </div>
               </div>
-              <button type="submit" name="add">Add Car</button>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="price">Price ($/day)</label>
+                  <input type="number" id="price" name="price" required>
+                </div>
+                <div class="form-group">
+                  <label for="features">Features</label>
+                  <input type="text" id="features" name="features" required>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="Description">Description</label>
+                <textarea name="Description" id="Description"></textarea>
+              </div>
+
+              <button type="submit" name="add" class="btn yellow">Add Car</button>
             </form>
           </div>
+
+
 
         </div>
         <!-- /.container-fluid -->

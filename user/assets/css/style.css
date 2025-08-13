@@ -45,8 +45,11 @@
      .nav-link {
        color: rgba(255, 255, 255, 0.85) !important;
        font-weight: 500;
+       font-family: cursive;
+       font-size: 18px;
        padding: .4rem 1rem;
        position: relative;
+       margin-right: 10px;
      }
 
      .nav-link::after {
@@ -110,7 +113,7 @@
        content: "";
        position: absolute;
        inset: 0;
-       background-image: url('/car_rental/user/assets/images/hero3.jpg');
+       background-image: url('/car_rental/user/assets/images/about-us.jpg');
        background-size: cover;
        background-position: center;
        filter: brightness(.45) contrast(1.02) saturate(1.05);
@@ -258,7 +261,7 @@
      }
 
      @media (max-width: 768px) {
-       .hero {
+       .heros {
          padding: 2rem 1rem;
          min-height: auto;
        }
