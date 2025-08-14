@@ -1,4 +1,4 @@
-<?php include("includes/topbar.php"); ?>
+
 <?php include("config/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +18,6 @@
   <section class="service_hero">
     <div class="wrap">
       <div>
-        <span class="badge">Premium Experience</span>
         <h1>Luxury Car Rentals, Chauffeur Service & Bespoke Travel</h1>
         <p>Arrive with presence. Choose from our curated fleet of luxury sedans, SUVs and exotics — backed by
           white-glove service, flexible plans and 24×7 support.</p>
@@ -28,7 +27,7 @@
         </div>
       </div>
       <div class="hero-card">
-        <div class="row"><strong>Today’s Spotlight</strong> <span class="badge">New Arrival</span></div>
+        <div class="row"><strong>Today’s Spotlight</strong></div>
         <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop"
           alt="Spotlight Car" style="border-radius:12px;height:220px;object-fit:cover;">
         <div class="row">
@@ -76,67 +75,62 @@
       <p>Handpicked models with impeccable maintenance and premium interiors.</p>
     </div>
 
-    <section class="car-section">
-      <div class="car-grid">
-        <?php
-    $sql = "SELECT * FROM cars";
-    $result = $con->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo '
-            <div class="car-card">
-              <div class="car-img">
-                <span class="badge '.$row['badge'].'">'.$row['badge'].'</span>
-                <img src="'.$row['image'].'" alt="'.$row['name'].'">
-              </div>
-              <div class="car-info">
-                <h3>'.$row['name'].'</h3>
-                <div class="car-meta">
-                  <span><i class="fa-solid fa-user-group"></i> '.$row['seats'].'</span>
-                  <span><i class="fa-solid fa-gas-pump"></i> '.$row['fuel'].'</span>
-                  <span><i class="fa-solid fa-gear"></i> '.$row['transmission'].'</span>
-                </div>
-                <div class="price">$'.$row['price'].'/day</div>
-                <div class="car-buttons">
-                  <button class="btn yellow view-details" 
-                    data-name="'.$row['name'].'" 
-                    data-price="$'.$row['price'].'/day" 
-                    data-features="'.$row['features'].'" 
-                    data-description="'.$row['description'].'" 
-                    data-image="'.$row['image'].'">View Details</button>
-                  <button class="btn outline">Add to Wishlist</button>
-                </div>
-              </div>
-            </div>
-            ';
-        }
-     }
-     ?>
+<section class="car-section">
+    <div class="car-grid">
+    <?php
+      $sel="SELECT * FROM cars";
+      $rs=$con->query($sel);
+      while($row=$rs->fetch_assoc()) {
+      ?>
+      <div class="car-card">
+        <div class="car-img">
+         <span class="badge"><?php echo $row['badge'];  ?></span>
+          <img src="<?php echo $row['badge'];  ?>" alt="<?php echo $row['name']; ?>">
+        </div>
+        <div class="car-info">
+          <h3><?php echo $row['name'];  ?></h3>
+          <div class="car-meta">
+            <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?> Seats</span>
+            <span><i class="fa-solid fa-gas-pump"></i><?php echo $row['fuel']; ?></span>
+            <span><i class="fa-solid fa-gear"></i> <?php echo $row['transmission']; ?></span>
+          </div>
+          <div class="price">$<?php echo $row['price']; ?>/day</div>
+          <div class="car-buttons">
+            <button class="btn-yellow view-details" data-name="<?php echo $row['name']; ?>" data-price="$<?php echo $row['price']; ?>/day"
+              data-features="<?php echo $row['features']; ?>" data-description="<?php echo $row['description']; ?>"
+              data-image="<?php echo $row['image']; ?>">View Details</button>
+            <button class="btn-outline">Add to Wishlist</button>
+          </div>
+        </div>
       </div>
-    </section>
+      <?php }?>
+
+    </div>
+</section>
+
   </div>
 
   <!-- Modal -->
-<div class="modal-overlay" style="display:none;">
-  <div class="modal-content">
-    <span class="close-modal">&times;</span>
-    <div class="modal-body">
-      <div class="modal-left">
-        <img id="modal-image" src="" alt="">
-      </div>
-      <div class="modal-right">
-        <h2 id="modal-title"></h2>
-        <div class="modal-price" id="modal-price"></div>
-        <div class="modal-meta" id="modal-features"></div>
-        <div class="modal-description" id="modal-description"></div>
-        <div class="modal-buttons">
-          <button class="btn yellow">Book Now</button>
-          <button class="btn outline"><i class="fa-solid fa-share"></i> Share</button>
+  <div class="modal-overlay" style="display:none;">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="modal-image" src="" alt="">
+        </div>
+        <div class="modal-right">
+          <h2 id="modal-title"></h2>
+          <div class="modal-price" id="modal-price"></div>
+          <div class="modal-meta" id="modal-features"></div>
+          <div class="modal-description" id="modal-description"></div>
+          <div class="modal-buttons">
+            <button class="btn yellow">Book Now</button>
+            <button class="btn outline"><i class="fa-solid fa-share"></i> Share</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- HOW IT WORKS -->
   <section class="section">

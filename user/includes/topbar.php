@@ -37,6 +37,7 @@
           <li class="nav-item"><a class="nav-link active" href="/car_rental/index.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/about.php">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/services.php">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="/car_rental/user/vehicals.php">Vehicals</a></li>
           <li class="nav-item"><a class="nav-link" href="/car_rental/user/contact.php">Contact Us</a></li>
         </ul>
 
