@@ -30,13 +30,11 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="add_car.php">Add car</a>
-            <a class="collapse-item" href="view_car.php">View car </a>
+            <a class="collapse-item" href="add_vehical.php">Add Vehical</a>
+            <a class="collapse-item" href="view_vehical.php">View Vehical </a>
           </div>
         </div>
       </li>
-
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

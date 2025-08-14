@@ -243,6 +243,7 @@ img {
 
     .car-info h3 {
       font-size: 1.2rem;
+      color: white;
     }
 
     .car-meta {
@@ -263,22 +264,22 @@ img {
       gap: 10px;
     }
 
-    .btn-yellow,.btn-outline {
+    .button-yellow,.button-outline {
       border-radius: 10px;
       padding: 10px 20px;
       flex: 1;
       padding: 8px;
       border-radius: 6px;
       border: none;
-      font-weight: bold;
+      font-weight: 400;
       cursor: pointer;
      
     }
-    .btn-yellow{
+    .button-yellow{
       background: #ffeb3b;
       color: #000;
     }
-    .btn-outline {
+    .button-outline {
       background: transparent;
       border: 1px solid #ccc;
       color: #ccc;
@@ -384,13 +385,13 @@ img {
       text-align: center;
     }
 
-    .modal-buttons .btn.yellow {
+    .modal-buttons .button-yellow {
       background: #facc15;
       color: #000;
       border: none;
     }
 
-    .modal-buttons .btn.outline {
+    .modal-buttons .button-outline {
       background: transparent;
       border: 2px solid #facc15;
       color: #facc15;

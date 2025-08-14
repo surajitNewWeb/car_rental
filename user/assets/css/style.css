@@ -422,10 +422,11 @@
        font-weight: 800;
      }
 
-     .car-card button {
+     .car-card .btns {
        border-radius: 10px;
        border: none;
        padding: .45rem .75rem;
+       text-decoration: none;
        background: linear-gradient(90deg, var(--accent), var(--accent-2));
        color: #06121a;
        font-weight: 700;

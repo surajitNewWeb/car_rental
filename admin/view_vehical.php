@@ -1,25 +1,27 @@
-<?php
-include("admin_inc/db.php");
-?>
+<?php include("admin_inc/db.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>view car</title>
+  <title>add card</title>
+
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
-
+ <link href="assets/css/view.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="assets/css/view.css" rel="stylesheet">
+ 
 
 </head>
 
@@ -47,53 +49,70 @@ include("admin_inc/db.php");
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">View Car</h1>
-<div class="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Badge</th>
-        <th>Seats</th>
-        <th>Fuel</th>
-        <th>Transmission</th>
-        <th>Price</th>
-        <th>Features</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php 
-      $sel="SELECT * FROM cars";
+          <h1 class="h3 mb-4 text-gray-800">View Vehical</h1>
+         
+          <table>
+            <a class="bnt btn-add" href="add_vehical.php">Add-vehical</a>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Seats</th>
+                <th>Fuel</th>
+                <th>Transmission</th>
+                <th>Price/Day</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+      $sel="SELECT * FROM vehical";
       $rs=$con->query($sel);
       while($row=$rs->fetch_assoc()) {
       ?>
-      <tr>
-        <td><?php echo $row['name']; ?></td>
-        <td><img class="thumb" src="assets/images/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>"></td>
-        <td><span class="badge"><?php echo $row['badge']; ?></span></td>
-        <td><?php echo $row['seats']; ?></td>
-        <td><?php echo $row['fuel']; ?></td>
-        <td><?php echo $row['transmission']; ?></td>
-        <td class="price">$<?php echo $row['price']; ?>/day</td>
-        <td class="truncate" title="Bluetooth, Cruise Control, Rear Camera">
-         <?php echo $row['features']; ?>
-        </td>
-        <td class="truncate" title="Comfortable city sedan with smooth CVT.">
-          <?php echo $row['description']; ?>
-        </td>
-        <td>
-          <button class="btn btn-update">Update</button>
-          <button class="btn btn-delete">Delete</button>
-        </td>
-      </tr>
-      <?php } ?>
-     
-    </tbody>
-  </table>
-</div>
+              <tr>
+                <td>
+                  <?php echo $row['name']; ?>
+                </td>
+                <td><img class="thumb" src="assets/images/<?php echo $row['image']; ?>"
+                    alt="<?php echo $row['name']; ?>"></td>
+                <td><span class="brand">
+                    <?php echo $row['brand']; ?>
+                  </span></td>
+                <td>
+                  <?php echo $row['type']; ?>
+                </td>
+                <td>
+                  <?php echo $row['seats']; ?>
+                </td>
+                <td>
+                  <?php echo $row['fuel']; ?>
+                </td>
+                <td class="transmission">
+                  <?php echo $row['transmission']; ?>
+                </td>
+                <td class="price">$
+                  <?php echo $row['price']; ?>/day
+                </td>
+                <td class="description">
+                  <?php echo $row['description']; ?>
+                </td>
+                <td>
+                  <button class="btn btn-update">Update</button>
+                  <button class="btn btn-delete">Delete</button>
+                </td>
+              </tr>
+              <?php } ?>
+
+            </tbody>
+          </table>
+
+
+
+
         </div>
         <!-- /.container-fluid -->
 

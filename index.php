@@ -73,7 +73,7 @@
           <h3>Hyundai Creta</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹1,999 / day</div>
-            <button class="btn">Rent Now</button>
+            <button class="btns">Rent Now</button>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@
           <h3>Maruti Swift</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹999 / day</div>
-            <button class="btn">Rent Now</button>
+            <button class="btns">Rent Now</button>
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
           <h3>Toyota Innova</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹2,999 / day</div>
-            <button class="btn">Rent Now</button>
+            <button class="btns">Rent Now</button>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@
           <h3>BS6 Mahindra Scorpio</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹3,499 / day</div>
-            <button class="btn">Rent Now</button>
+            <button class="btns">Rent Now</button>
           </div>
         </div>
       </div>

@@ -1,331 +1,292 @@
-<?php include("../config/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luxury Cars</title>
-  <link rel="stylesheet" href="#">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0d1321;
-      color: #fff;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Rental - Listings</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-1: #071022;
+  --bg-2: #0f2940;
+  --accent: #ffb020;
+  --accent-2: #3ad7c0;
+  --muted: #8b98a6;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.06);
+}
 
-    .car-section {
-      max-width: 1300px;
-      margin: auto;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: var(--bg-1);
+  color: #fff;
+}
 
-    .car-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
-    }
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
 
-    .car-card {
-      background: #121b2c;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+header h1 {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-bottom: .5rem;
+}
 
-    .car-img {
-      position: relative;
-    }
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: var(--bg-2);
+  padding: 1rem;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 0 1rem;
+}
 
-    .car-img img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+.filter-bar input,
+.filter-bar select {
+  padding: .5rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
 
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #000;
-      background: #ff9800;
-    }
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
-    .badge.limited {
-      background: #cddc39;
-      color: #000;
-    }
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
 
-    .badge.executive {
-      background: #2196f3;
-      color: #fff;
-    }
+.car-card {
+  background: var(--glass);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  transition: 0.3s;
+}
 
-    .car-info {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+.car-card:hover {
+  transform: translateY(-5px);
+}
 
-    .car-info h3 {
-      font-size: 1.2rem;
-    }
+.car-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
 
-    .car-meta {
-      display: flex;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+.car-info {
+  padding: 1rem;
+}
 
-    .price {
-      color: #ffeb3b;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
+.car-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
 
-    .car-buttons {
-      display: flex;
-      gap: 10px;
-    }
+.car-meta {
+  display: flex;
+  gap: 10px;
+  font-size: .9rem;
+  color: var(--muted);
+  margin: .5rem 0;
+}
 
-    .btn-yellow,.btn-outline {
-      border-radius: 10px;
-      padding: 10px 20px;
-      flex: 1;
-      padding: 8px;
-      border-radius: 6px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-     
-    }
-    .btn-yellow{
-      background: #ffeb3b;
-      color: #000;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid #ccc;
-      color: #ccc;
-    }
+.price {
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
 
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      padding: 20px;
-    }
+.btn {
+  background: var(--accent);
+  border: none;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .modal-content {
-      background: #0f172a;
-      border-radius: 12px;
-      max-width: 960px;
-      width: 100%;
-      overflow: hidden;
-      position: relative;
-    }
+.btn:hover {
+  background: #e09a12;
+}
 
-    .modal-body {
-      display: flex;
-      flex-direction: row;
-    }
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    .modal-left {
-      flex: 1;
-      background: #000;
-    }
+.modal-content {
+  background: var(--bg-2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  animation: zoomIn .3s ease;
+}
 
-    .modal-left img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .modal-right {
-      flex: 1;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: white;
-    }
+.modal img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
 
-    .modal-right h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
+.modal h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
 
-    .modal-price {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #facc15;
-      margin-bottom: 20px;
-    }
+.modal .car-meta {
+  margin-bottom: 1rem;
+}
 
-    .modal-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .modal-meta span {
-      background: rgba(255, 255, 255, 0.08);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .modal-description {
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
-
-    .modal-buttons {
-      display: flex;
-      gap: 12px;
-    }
-
-    .modal-buttons .btn {
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      flex: 1;
-      text-align: center;
-    }
-
-    .modal-buttons .btn.yellow {
-      background: #facc15;
-      color: #000;
-      border: none;
-    }
-
-    .modal-buttons .btn.outline {
-      background: transparent;
-      border: 2px solid #facc15;
-      color: #facc15;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #facc15;
-    }
-  </style>
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  float: right;
+  cursor: pointer;
+}
+</style>
 </head>
-
 <body>
 
-  <section class="car-section">
-    <div class="car-grid">
-    <?php
-      $sel="SELECT * FROM cars";
-      $rs=$con->query($sel);
-      while($row=$rs->fetch_assoc()) {
-      ?>
-      <div class="car-card">
-        <div class="car-img">
-         <span class="badge"><?php echo $row['badge'];  ?></span>
-          <img src="<?php echo $row['badge'];  ?>" alt="<?php echo $row['name']; ?>">
-        </div>
-        <div class="car-info">
-          <h3><?php echo $row['name'];  ?></h3>
-          <div class="car-meta">
-            <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?> Seats</span>
-            <span><i class="fa-solid fa-gas-pump"></i><?php echo $row['fuel']; ?></span>
-            <span><i class="fa-solid fa-gear"></i> <?php echo $row['transmission']; ?></span>
-          </div>
-          <div class="price">$<?php echo $row['price']; ?>/day</div>
-          <div class="car-buttons">
-            <button class="btn-yellow view-details" data-name="<?php echo $row['name']; ?>" data-price="$<?php echo $row['price']; ?>/day"
-              data-features="<?php echo $row['features']; ?>" data-description="<?php echo $row['description']; ?>"
-              data-image="<?php echo $row['image']; ?>">View Details</button>
-            <button class="btn-outline">Add to Wishlist</button>
-          </div>
-        </div>
-      </div>
-      <?php }?>
+<header>
+  <h1>🚗 Find Your Perfect Ride</h1>
+  <p>Search, filter, and book your dream car instantly</p>
+</header>
 
-    </div>
-  </section>
-
-  <!-- Modal -->
-  <div class="modal-overlay" style="display:none;">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class="modal-body">
-        <div class="modal-left">
-          <img id="modal-image" src="" alt="">
-        </div>
-        <div class="modal-right">
-          <h2 id="modal-title"></h2>
-          <div class="modal-price" id="modal-price"></div>
-          <div class="modal-meta" id="modal-features"></div>
-          <div class="modal-description" id="modal-description"></div>
-          <div class="modal-buttons">
-            <button class="btn yellow">Book Now</button>
-            <button class="btn outline"><i class="fa-solid fa-share"></i> Share</button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="filter-bar">
+  <input type="text" id="search" placeholder="Search by name...">
+  
+  <select id="brandFilter">
+    <option value="">All Brands</option>
+    <option value="Toyota">Toyota</option>
+    <option value="BMW">BMW</option>
+    <option value="Audi">Audi</option>
+  </select>
+  
+  <select id="typeFilter">
+    <option value="">All Types</option>
+    <option value="SUV">SUV</option>
+    <option value="Sedan">Sedan</option>
+    <option value="Hatchback">Hatchback</option>
+  </select>
+  
+  <div class="price-range">
+    <label>Max Price: $<span id="priceValue">100</span></label>
+    <input type="range" id="priceFilter" min="20" max="200" value="100">
   </div>
+</div>
 
-  <script>
-    document.querySelectorAll(".view-details").forEach(btn => {
-      btn.addEventListener("click", function () {
-        document.getElementById("modal-title").textContent = this.dataset.name;
-        document.getElementById("modal-price").textContent = this.dataset.price;
-        document.getElementById("modal-image").src = this.dataset.image;
+<div class="car-grid" id="carGrid">
+  <!-- Cars will load here -->
+</div>
 
-        let features = this.dataset.features.split(",");
-        let featuresHTML = features.map(f => `<span>${f.trim()}</span>`).join("");
-        document.getElementById("modal-features").innerHTML = featuresHTML;
+<!-- Modal -->
+<div class="modal" id="carModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img id="modalImage" src="" alt="">
+    <h2 id="modalName"></h2>
+    <div class="car-meta">
+      <span><i class="fa-solid fa-user-group"></i> <span id="modalSeats"></span></span>
+      <span><i class="fa-solid fa-gas-pump"></i> <span id="modalFuel"></span></span>
+      <span><i class="fa-solid fa-gear"></i> <span id="modalTransmission"></span></span>
+    </div>
+    <p id="modalDescription"></p>
+    <div class="price" id="modalPrice"></div>
+    <button class="btn">Book Now</button>
+  </div>
+</div>
 
-        document.getElementById("modal-description").textContent = this.dataset.description;
+<script>
+const cars = [
+  {name: "Toyota Fortuner", brand: "Toyota", type: "SUV", seats: 7, fuel: "Diesel", transmission: "Manual", price: 80, description: "Spacious and powerful SUV for family trips.", image: "https://via.placeholder.com/400x200"},
+  {name: "BMW X5", brand: "BMW", type: "SUV", seats: 5, fuel: "Petrol", transmission: "Automatic", price: 150, description: "Luxury SUV with premium comfort.", image: "https://via.placeholder.com/400x200"},
+  {name: "Audi A4", brand: "Audi", type: "Sedan", seats: 5, fuel: "Petrol", transmission: "Automatic", price: 100, description: "Elegant sedan with smooth handling.", image: "https://via.placeholder.com/400x200"}
+];
 
-        document.querySelector(".modal-overlay").style.display = "flex";
-      });
-    });
+function loadCars() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const brand = document.getElementById('brandFilter').value;
+  const type = document.getElementById('typeFilter').value;
+  const maxPrice = document.getElementById('priceFilter').value;
+  
+  const carGrid = document.getElementById('carGrid');
+  carGrid.innerHTML = "";
+  
+  cars.filter(c => 
+    c.name.toLowerCase().includes(search) &&
+    (brand === "" || c.brand === brand) &&
+    (type === "" || c.type === type) &&
+    c.price <= maxPrice
+  ).forEach(c => {
+    const card = document.createElement('div');
+    card.className = "car-card";
+    card.innerHTML = `
+      <img src="${c.image}" alt="${c.name}">
+      <div class="car-info">
+        <h3>${c.name}</h3>
+        <div class="car-meta">
+          <span><i class="fa-solid fa-user-group"></i> ${c.seats}</span>
+          <span><i class="fa-solid fa-gas-pump"></i> ${c.fuel}</span>
+          <span><i class="fa-solid fa-gear"></i> ${c.transmission}</span>
+        </div>
+        <div class="price">$${c.price}/day</div>
+        <button class="btn" onclick='viewDetails(${JSON.stringify(c)})'>View Details</button>
+      </div>
+    `;
+    carGrid.appendChild(card);
+  });
+}
 
-    document.querySelector(".close-modal").addEventListener("click", function () {
-      document.querySelector(".modal-overlay").style.display = "none";
-    });
+function viewDetails(car) {
+  document.getElementById('modalImage').src = car.image;
+  document.getElementById('modalName').textContent = car.name;
+  document.getElementById('modalSeats').textContent = car.seats;
+  document.getElementById('modalFuel').textContent = car.fuel;
+  document.getElementById('modalTransmission').textContent = car.transmission;
+  document.getElementById('modalDescription').textContent = car.description;
+  document.getElementById('modalPrice').textContent = `$${car.price}/day`;
+  document.getElementById('carModal').style.display = "flex";
+}
 
-    document.querySelector(".modal-overlay").addEventListener("click", function (e) {
-      if (e.target === this) {
-        this.style.display = "none";
-      }
-    });
+function closeModal() {
+  document.getElementById('carModal').style.display = "none";
+}
 
-  </script>
+document.getElementById('search').addEventListener('input', loadCars);
+document.getElementById('brandFilter').addEventListener('change', loadCars);
+document.getElementById('typeFilter').addEventListener('change', loadCars);
+document.getElementById('priceFilter').addEventListener('input', e => {
+  document.getElementById('priceValue').textContent = e.target.value;
+  loadCars();
+});
+
+loadCars();
+</script>
+
 </body>
-
 </html>
