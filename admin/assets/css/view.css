@@ -48,16 +48,6 @@ tbody tr:hover {
   border-radius: 4px;
 }
 
-/* Brand Tag */
-.brand {
-  display: inline-block;
-  padding: 3px 8px;
-  background: var(--accent, #ffb020);
-  color: #fff;
-  border-radius: 4px;
-  font-size: 12px;
-}
-
 /* Buttons */
 .btn {
   padding: 5px 10px;
