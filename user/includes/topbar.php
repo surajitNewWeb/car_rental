@@ -49,9 +49,9 @@
         </ul>
 
         <div class="d-flex align-items-center gap-2">
-          <a href="/car_rental/user/pages/signup.php" class=" btn-outline-gold btn-sm"> <i
-              class="fa-regular fa-user me-1"></i> Sign -Up</a>
-          <a href="/car_rental/user/pages/login.php" class=" btn-gold btn-sm">Log in</a>
+          <a href="/car_rental/user/pages/signup.php" class=" sign "> 
+            <i class="fa-regular fa-user me-1"></i> Sign -Up</a>
+          <a href="/car_rental/user/pages/login.php" class=" log ">Log in</a>
         </div>
       </div>
     </div>

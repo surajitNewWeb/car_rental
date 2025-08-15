@@ -35,12 +35,8 @@ img {
 
 /* Hero */
 .service_hero {
-  position: relative;
   overflow: hidden;
   padding: 80px 18px 60px;
-  background:
-    radial-gradient(1000px 300px at 80% -10%, rgba(212, 175, 55, .18), transparent 60%),
-    linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
 }
 
 .service_hero .wrap {

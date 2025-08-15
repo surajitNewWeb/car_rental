@@ -14,11 +14,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Caveat:wght@500;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- custom css -->
-  <link rel="stylesheet" href="assets/css/vehical.css">
+   <link rel="stylesheet" href="assets/css/vehical.css">
 
 </head>
 
@@ -86,37 +85,37 @@ while ($row = $rs->fetch_assoc()) {
     </div>
     <?php } ?>
   </div>
-  <!-- modal -->
-  <div class="modal" id="carModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+<!-- modal -->
+ <div class="modal" id="carModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
 
-      <div class="modal-body">
-        <!-- Left side (image) -->
-        <div class="modal-left">
-          <img id="modalImage" src="" alt="Car Image">
-        </div>
+    <div class="modal-body">
+      <!-- Left side (image) -->
+      <div class="modal-left">
+        <img id="modalImage" src="" alt="Car Image">
+      </div>
 
-        <!-- Right side (details) -->
-        <div class="modal-right">
-          <h2 id="modalTitle"></h2>
-          <p><i class="fa-solid fa-car"></i> <strong>Brand:</strong> <span id="modalBrand"></span></p>
-          <p><i class="fa-solid fa-list"></i> <strong>Type:</strong> <span id="modalType"></span></p>
-          <p><i class="fa-solid fa-chair"></i> <strong>Seats:</strong> <span id="modalSeats"></span></p>
-          <p><i class="fa-solid fa-gas-pump"></i> <strong>Fuel:</strong> <span id="modalFuel"></span></p>
-          <p><i class="fa-solid fa-gear"></i> <strong>Transmission:</strong> <span id="modalTransmission"></span></p>
-          <p><i class="fa-solid fa-dollar-sign"></i> <strong>Price:</strong> $<span id="modalPrice"></span> /day</p>
-        </div>
+      <!-- Right side (details) -->
+      <div class="modal-right">
+        <h2 id="modalTitle"></h2>
+        <p><strong><i class="fa-solid fa-car"></i>Brand:</strong> <span id="modalBrand"></span></p>
+        <p><strong><i class="fa-solid fa-list"></i>Type:</strong> <span id="modalType"></span></p>
+        <p><strong><i class="fa-solid fa-chair"></i>Seats:</strong> <span id="modalSeats"></span></p>
+        <p><strong><i class="fa-solid fa-gas-pump"></i>Fuel:</strong> <span id="modalFuel"></span></p>
+        <p><strong><i class="fa-solid fa-gear"></i>Transmission:</strong> <span id="modalTransmission"></span></p>
+        <p><strong><i class="fa-solid fa-car"></i>Price:</strong> $<span id="modalPrice"></span> /day</p>
       </div>
     </div>
   </div>
-  <!-- End of modal -->
+</div>
+
 
   <!-- footer -->
-  <?php include("includes/footer.php"); ?>
+   <?php include("includes/footer.php"); ?>
 
-  <script src="assets/js/vehical.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="assets/js/vehical.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

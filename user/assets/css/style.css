@@ -69,9 +69,10 @@
        width: 70%;
      }
 
-     .btn-gold {
+     .log {
        background: linear-gradient(90deg, var(--accent), #ffd27a);
        color: #06121a;
+       border-radius: 999px;
        padding: .4rem .9rem;
        font-weight: 600;
        border: none;
@@ -79,7 +80,7 @@
          text-decoration: none;
      }
 
-     .btn-outline-gold {
+     .sign {
        color: var(--accent);
        border: 1px solid rgba(255, 176, 32, 0.25);
        border-radius: 999px;
@@ -88,7 +89,7 @@
        text-decoration: none;
      }
 
-     .btn-outline-gold:hover {
+     .sign:hover {
        background: rgb(243, 181, 24);
        color: #fff;
      }
