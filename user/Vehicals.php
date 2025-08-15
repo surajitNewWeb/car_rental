@@ -1,192 +1,167 @@
 <?php include("includes/topbar.php"); ?>
+<?php include("config/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Car Rental - Filter & Modal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Car Rental - Listings</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
-  --bg-1: #071022;
-  --bg-2: #0f2940;
-  --accent: #ffb020;
-  --accent-2: #3ad7c0;
-  --muted: #8b98a6;
-  --card: #ffffff;
-  --glass: rgba(255, 255, 255, 0.06);
+  --navy: #0b1a2e;
+  --navy-2: #0f2742;
+  --ink: #0b1020;
+  --gold: #d4af37;
+  --gold-2: #b48900;
+  --glass: rgba(255, 255, 255, .06);
+  --muted: #a5b0c2;
+  --card: #0e2038;
+  --white: #f7f8fb;
 }
 
+/* Basic Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background: var(--bg-1);
-  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
 }
 
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-header h1 {
-  color: var(--accent);
-  font-size: 2.2rem;
-  margin-bottom: .5rem;
-}
-
+/* Filter Bar */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  background: var(--bg-2);
-  padding: 1rem;
-  justify-content: center;
-  border-radius: 10px;
-  margin: 0 1rem;
+  padding: 15px;
+  background: var(--navy-2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.filter-bar input, .filter-bar select {
+  padding: 8px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--white);
+}
+.filter-bar input[type="range"] {
+  width: 150px;
+}
+.filter-bar label {
+  color: var(--gold);
+  font-weight: bold;
 }
 
-.filter-bar input,
-.filter-bar select {
-  padding: .5rem;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-}
-
-.price-range {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
+/* Grid */
 .car-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
-
 .car-card {
-  background: var(--glass);
-  border-radius: 12px;
+  background: var(--card);
+  border-radius: 8px;
   overflow: hidden;
-  backdrop-filter: blur(6px);
-  transition: 0.3s;
+  transition: transform 0.2s ease;
 }
-
-.car-card:hover {
-  transform: translateY(-5px);
-}
-
+.car-card:hover { transform: scale(1.02); }
 .car-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
-
-.car-info {
-  padding: 1rem;
+.info {
+  padding: 15px;
 }
-
-.car-info h3 {
-  margin: 0;
-  font-size: 1.2rem;
+.info h3 {
+  margin-bottom: 10px;
+  color: var(--gold);
 }
-
-.car-meta {
-  display: flex;
-  gap: 10px;
-  font-size: .9rem;
+.icons p {
+  font-size: 14px;
   color: var(--muted);
-  margin: .5rem 0;
+  margin: 3px 0;
 }
-
+.icons i {
+  color: var(--gold);
+  margin-right: 6px;
+}
 .price {
   font-weight: bold;
-  color: var(--accent);
-  margin-bottom: .5rem;
+  margin: 10px 0;
+  color: var(--gold);
 }
-
-.btn {
-  background: var(--accent);
+.view-btn {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 8px 12px;
   border: none;
-  padding: .5rem 1rem;
-  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
+  border-radius: 4px;
+}
+.view-btn:hover {
+  background: var(--gold-2);
 }
 
-.btn:hover {
-  background: #e09a12;
-}
-
-/* Modal */
+/* Modal Updated Style */
 .modal {
   display: none;
   position: fixed;
-  inset: 0;
+  z-index: 200;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  padding: 20px;
 }
-
 .modal-content {
-  background: var(--bg-2);
-  padding: 1.5rem;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--gold);
+  padding: 20px;
   border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
-  animation: zoomIn .3s ease;
+  width: 100%;
+  max-width: 550px;
+  color: var(--white);
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.5);
 }
-
-@keyframes zoomIn {
-  from { transform: scale(0.7); opacity: 0; }
+.modal-content img {
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+.modal-content h2 {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.modal-content p {
+  margin: 6px 0;
+}
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-
-.modal img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.modal h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-.modal .car-meta {
-  margin-bottom: 1rem;
-}
-
-.close-btn {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  color: #fff;
-  float: right;
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
   cursor: pointer;
+  color: var(--gold);
 }
+.close:hover { color: var(--gold-2); }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>Find Your Perfect Ride</h1>
-  <p>Search, filter, and book your dream car instantly</p>
-</header>
-
+<!-- Filters -->
 <div class="filter-bar">
-  <input type="text" id="search" placeholder="Search by name...">
-  
-  <select id="brandFilter">
-    <option value="">All Brands</option>
-    <option value="Toyota">Toyota</option>
-    <option value="BMW">BMW</option>
-    <option value="Audi">Audi</option>
-  </select>
+  <input type="text" id="searchInput" placeholder="Search by name...">
   
   <select id="typeFilter">
     <option value="">All Types</option>
@@ -195,98 +170,119 @@ header h1 {
     <option value="Hatchback">Hatchback</option>
   </select>
   
-  <div class="price-range">
-    <label>Max Price: $<span id="priceValue">100</span></label>
-    <input type="range" id="priceFilter" min="20" max="200" value="100">
-  </div>
+  <select id="brandFilter">
+    <option value="">All Brands</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Honda">Honda</option>
+    <option value="Suzuki">Suzuki</option>
+  </select>
+  
+  <label for="priceRange">Max Price: <span id="priceValue">100</span></label>
+  <input type="range" id="priceRange" min="0" max="200" value="100">
 </div>
 
+<!-- Car Grid -->
 <div class="car-grid" id="carGrid">
-  <!-- Cars will load here -->
+<?php
+$sel = "SELECT * FROM vehical";
+$rs = $con->query($sel);
+while ($row = $rs->fetch_assoc()) {
+?>
+<div class="car-card"
+     data-name="<?php echo $row['name']; ?>"
+     data-brand="<?php echo $row['brand']; ?>"
+     data-type="<?php echo $row['type']; ?>"
+     data-price="<?php echo $row['price']; ?>">
+
+    <img src="<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>">
+    <div class="info">
+        <h3><?php echo $row['name']; ?></h3>
+        <div class="icons">
+            <p><i class="fa-solid fa-car"></i><span class="meta"> Brand:</span> <?php echo $row['brand']; ?></p>
+            <p><i class="fa-solid fa-list"></i><span class="meta"> Type:</span> <?php echo $row['type']; ?></p>
+            <p><i class="fa-solid fa-chair"></i><span class="meta"> Seats:</span> <?php echo $row['seats']; ?></p>
+            <p><i class="fa-solid fa-gas-pump"></i><span class="meta"> Fuel:</span> <?php echo $row['fuel']; ?></p>
+            <p><i class="fa-solid fa-gear"></i><span class="meta"> Transmission:</span> <?php echo $row['transmission']; ?></p>
+        </div>
+        <div class="price">$<?php echo $row['price']; ?> /day</div>
+        <button class="view-btn" onclick="openModal(this)">View Details</button>
+    </div>
+</div>
+<?php } ?>
 </div>
 
 <!-- Modal -->
 <div class="modal" id="carModal">
   <div class="modal-content">
-    <button class="close-btn" onclick="closeModal()">&times;</button>
-    <img id="modalImage" src="" alt="">
-    <h2 id="modalName"></h2>
-    <div class="car-meta">
-      <span><i class="fa-solid fa-user-group"></i> <span id="modalSeats"></span></span>
-      <span><i class="fa-solid fa-gas-pump"></i> <span id="modalFuel"></span></span>
-      <span><i class="fa-solid fa-gear"></i> <span id="modalTransmission"></span></span>
-    </div>
-    <p id="modalDescription"></p>
-    <div class="price" id="modalPrice"></div>
-    <button class="btn">Book Now</button>
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" style="width:100%;">
+    <h2 id="modalTitle"></h2>
+    <p><strong>Brand:</strong> <span id="modalBrand"></span></p>
+    <p><strong>Type:</strong> <span id="modalType"></span></p>
+    <p><strong>Seats:</strong> <span id="modalSeats"></span></p>
+    <p><strong>Fuel:</strong> <span id="modalFuel"></span></p>
+    <p><strong>Transmission:</strong> <span id="modalTransmission"></span></p>
+    <p><strong>Price:</strong> $<span id="modalPrice"></span> /day</p>
   </div>
 </div>
 
 <script>
-const cars = [
-  {name: "Toyota Fortuner", brand: "Toyota", type: "SUV", seats: 7, fuel: "Diesel", transmission: "Manual", price: 80, description: "Spacious and powerful SUV for family trips.", image: "https://via.placeholder.com/400x200"},
-  {name: "BMW X5", brand: "BMW", type: "SUV", seats: 5, fuel: "Petrol", transmission: "Automatic", price: 150, description: "Luxury SUV with premium comfort.", image: "https://via.placeholder.com/400x200"},
-  {name: "Audi A4", brand: "Audi", type: "Sedan", seats: 5, fuel: "Petrol", transmission: "Automatic", price: 100, description: "Elegant sedan with smooth handling.", image: "https://via.placeholder.com/400x200"}
-];
+const searchInput = document.getElementById("searchInput");
+const typeFilter = document.getElementById("typeFilter");
+const brandFilter = document.getElementById("brandFilter");
+const priceRange = document.getElementById("priceRange");
+const priceValue = document.getElementById("priceValue");
+const carGrid = document.getElementById("carGrid").children;
 
-function loadCars() {
-  const search = document.getElementById('search').value.toLowerCase();
-  const brand = document.getElementById('brandFilter').value;
-  const type = document.getElementById('typeFilter').value;
-  const maxPrice = document.getElementById('priceFilter').value;
-  
-  const carGrid = document.getElementById('carGrid');
-  carGrid.innerHTML = "";
-  
-  cars.filter(c => 
-    c.name.toLowerCase().includes(search) &&
-    (brand === "" || c.brand === brand) &&
-    (type === "" || c.type === type) &&
-    c.price <= maxPrice
-  ).forEach(c => {
-    const card = document.createElement('div');
-    card.className = "car-card";
-    card.innerHTML = `
-      <img src="${c.image}" alt="${c.name}">
-      <div class="car-info">
-        <h3>${c.name}</h3>
-        <div class="car-meta">
-          <span><i class="fa-solid fa-user-group"></i> ${c.seats}</span>
-          <span><i class="fa-solid fa-gas-pump"></i> ${c.fuel}</span>
-          <span><i class="fa-solid fa-gear"></i> ${c.transmission}</span>
-        </div>
-        <div class="price">$${c.price}/day</div>
-        <button class="btn" onclick='viewDetails(${JSON.stringify(c)})'>View Details</button>
-      </div>
-    `;
-    carGrid.appendChild(card);
-  });
+function filterCars() {
+    const searchText = searchInput.value.toLowerCase();
+    const type = typeFilter.value;
+    const brand = brandFilter.value;
+    const maxPrice = parseInt(priceRange.value);
+
+    for (let card of carGrid) {
+        const name = card.dataset.name.toLowerCase();
+        const cType = card.dataset.type;
+        const cBrand = card.dataset.brand;
+        const cPrice = parseInt(card.dataset.price);
+
+        const matches = 
+            (name.includes(searchText)) &&
+            (type === "" || cType === type) &&
+            (brand === "" || cBrand === brand) &&
+            (cPrice <= maxPrice);
+
+        card.style.display = matches ? "block" : "none";
+    }
 }
 
-function viewDetails(car) {
-  document.getElementById('modalImage').src = car.image;
-  document.getElementById('modalName').textContent = car.name;
-  document.getElementById('modalSeats').textContent = car.seats;
-  document.getElementById('modalFuel').textContent = car.fuel;
-  document.getElementById('modalTransmission').textContent = car.transmission;
-  document.getElementById('modalDescription').textContent = car.description;
-  document.getElementById('modalPrice').textContent = `$${car.price}/day`;
-  document.getElementById('carModal').style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById('carModal').style.display = "none";
-}
-
-document.getElementById('search').addEventListener('input', loadCars);
-document.getElementById('brandFilter').addEventListener('change', loadCars);
-document.getElementById('typeFilter').addEventListener('change', loadCars);
-document.getElementById('priceFilter').addEventListener('input', e => {
-  document.getElementById('priceValue').textContent = e.target.value;
-  loadCars();
+searchInput.addEventListener("input", filterCars);
+typeFilter.addEventListener("change", filterCars);
+brandFilter.addEventListener("change", filterCars);
+priceRange.addEventListener("input", () => {
+    priceValue.textContent = priceRange.value;
+    filterCars();
 });
 
-loadCars();
+// Modal
+function openModal(btn) {
+    const card = btn.closest(".car-card");
+    document.getElementById("modalImage").src = card.querySelector("img").src;
+    document.getElementById("modalTitle").innerText = card.dataset.name;
+
+    const details = card.querySelectorAll(".icons p");
+    document.getElementById("modalBrand").innerText = details[0].textContent.replace('Brand:', '').trim();
+    document.getElementById("modalType").innerText = details[1].textContent.replace('Type:', '').trim();
+    document.getElementById("modalSeats").innerText = details[2].textContent.replace('Seats:', '').trim();
+    document.getElementById("modalFuel").innerText = details[3].textContent.replace('Fuel:', '').trim();
+    document.getElementById("modalTransmission").innerText = details[4].textContent.replace('Transmission:', '').trim();
+    document.getElementById("modalPrice").innerText = card.dataset.price;
+
+    document.getElementById("carModal").style.display = "flex";
+}
+function closeModal() {
+    document.getElementById("carModal").style.display = "none";
+}
 </script>
 
 </body>

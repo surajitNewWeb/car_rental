@@ -156,7 +156,7 @@
 
         <div class="btn-row">
           <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;Send Message</button>
-          <a class="btn-outline" href="https://wa.me/1234567890" target="_blank"><i class="fa-brands fa-whatsapp"></i>&nbsp;WhatsApp</a>
+          <a class="btn-outline" href="https://wa.me/7866846668" target="_blank"><i class="fa-brands fa-whatsapp"></i>&nbsp;WhatsApp</a>
         </div>
         <p class="note"><i class="fa-regular fa-circle-check" style="color:var(--success)"></i> We typically respond within 15 minutes during business hours.</p>
       </form>

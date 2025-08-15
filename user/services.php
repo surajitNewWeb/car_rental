@@ -76,33 +76,14 @@
     </div>
 
 <section class="car-section">
-    <div class="car-grid">
+  <div class="car-grid">
     <?php
-      $sel="SELECT * FROM cars";
+      $sel="SELECT * FROM vehical";
       $rs=$con->query($sel);
       while($row=$rs->fetch_assoc()) {
       ?>
-      <div class="car-card">
-        <div class="car-img">
-         <span class="badge"><?php echo $row['badge'];  ?></span>
-          <img src="<?php echo $row['badge'];  ?>" alt="<?php echo $row['name']; ?>">
-        </div>
-        <div class="car-info">
-          <h3><?php echo $row['name'];  ?></h3>
-          <div class="car-meta">
-            <span><i class="fa-solid fa-user-group"></i> <?php echo $row['seats']; ?> Seats</span>
-            <span><i class="fa-solid fa-gas-pump"></i><?php echo $row['fuel']; ?></span>
-            <span><i class="fa-solid fa-gear"></i> <?php echo $row['transmission']; ?></span>
-          </div>
-          <div class="price">$<?php echo $row['price']; ?>/day</div>
-          <div class="car-buttons">
-            <button class="button-yellow view-details" data-name="<?php echo $row['name']; ?>" data-price="$<?php echo $row['price']; ?>/day"
-              data-features="<?php echo $row['features']; ?>" data-description="<?php echo $row['description']; ?>"
-              data-image="<?php echo $row['image']; ?>">View Details</button>
-            <button class="button-outline">Add to Wishlist</button>
-          </div>
-        </div>
-      </div>
+
+
       <?php }?>
 
     </div>
@@ -111,26 +92,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal-overlay" style="display:none;">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div class="modal-body">
-        <div class="modal-left">
-          <img id="modal-image" src="" alt="">
-        </div>
-        <div class="modal-right">
-          <h2 id="modal-title"></h2>
-          <div class="modal-price" id="modal-price"></div>
-          <div class="modal-meta" id="modal-features"></div>
-          <div class="modal-description" id="modal-description"></div>
-          <div class="modal-buttons">
-            <button class="button-yellow">Book Now</button>
-            <button class="button-outline"><i class="fa-solid fa-share"></i> Share</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- HOW IT WORKS -->
   <section class="section">

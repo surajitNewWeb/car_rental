@@ -97,9 +97,6 @@
                 <td class="price">$
                   <?php echo $row['price']; ?>/day
                 </td>
-                <td class="description">
-                  <?php echo $row['description']; ?>
-                </td>
                 <td>
                   <button class="btn btn-update">Update</button>
                   <button class="btn btn-delete">Delete</button>

@@ -12,7 +12,7 @@ if (isset($_POST['add'])) {
     $fuel = $_POST['fuel'];
     $price = $_POST['price'];
     $transmission = $_POST['transmission'];
-    $description = $_POST['Description'];
+   
 
     // Image upload logic
     $buf=$_FILES['image']['tmp_name'];
@@ -20,7 +20,7 @@ if (isset($_POST['add'])) {
     move_uploaded_file($buf,"assets/images/".$fn);
 
     // Insert car details into the database
-    $ins= "INSERT INTO vehical SET name='$name', image='$fn',brand='$brand',type='$type',seats='$seats', fuel='$fuel', price='$price',transmission='$transmission',  description='$description'";
+    $ins= "INSERT INTO vehical SET name='$name', image='$fn',brand='$brand',type='$type',seats='$seats', fuel='$fuel', price='$price',transmission='$transmission'";
     if ($con->query($ins) === TRUE) {
         echo "<script>alert('Car added successfully!');</script>";
         header("location:view_vehical.php");
@@ -134,10 +134,6 @@ if (isset($_POST['add'])) {
         <label>Car Image</label>
         <input type="file" name="image" accept="image/*" required>
       </div>
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea name="description" rows="3" required></textarea>
     </div>
     <button type="submit" name="add">Add Car</button>
   </form>
