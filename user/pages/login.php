@@ -10,18 +10,32 @@ if (isset($_POST['login'])) {
     $e = $_POST['email'];
     $p = $_POST['pass'];
 
-    $sel= "SELECT * FROM users WHERE email='$e' AND password='$p'";
-    $rs=$con->query($sel);
-    if($rs->num_rows > 0) {
-        $row=$rs->fetch_assoc();
-        $_SESSION['un']=$row['name'];
-        header("location:dashboard.php");
+    // ✅ Use prepared statements to prevent SQL Injection
+    $stmt = $con->prepare("SELECT id, username, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $e);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        // ✅ Check password (plain for now, but hashing is better)
+        if ($row['password'] === $p) {
+            $_SESSION['un'] = $row['username'];
+
+            // ✅ Make sure this matches your actual column name
+            $_SESSION['user_id'] = $row['id'];  
+
+            header("location:dashboard.php");
+            exit();
+        } else {
+            echo "<script>alert('❌ Wrong password');</script>";
+        }
     } else {
-        echo "<script>alert('❌ Error: Invalid email or password');</script>";
+        echo "<script>alert('❌ No user found with this email');</script>";
     }
-
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

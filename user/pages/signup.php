@@ -10,14 +10,16 @@ if (isset($_POST['sign'])) {
     $e = $_POST['email'];
     $p = $_POST['pass'];
 
-    $ins="INSERT INTO users SET name='$n', email='$e', password='$p' "; 
+    $ins="INSERT INTO users SET username='$n', email='$e', password='$p' "; 
      if($con->query($ins)) {
-         echo "<script>alert('✅ Sign up successful!');</script>";   
+         echo "<script>alert('✅ Sign up successful!');</script>"; 
+           header("location:login.php");  
      } else{
             echo "<script>alert('❌ Error: Could not sign up');</script>";
          } 
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

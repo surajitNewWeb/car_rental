@@ -1,6 +1,4 @@
    
-
-
     // Counter animation
     document.querySelectorAll('.stat h2').forEach(el=>{
       const target = +el.dataset.target;

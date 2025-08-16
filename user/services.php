@@ -9,11 +9,427 @@
   <title>DriveEasy Rentals — Services</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- service css -->
-  <link rel="stylesheet" href="assets/css/service.css">
+
+  <style>
+    :root {
+      --bg-1: #071022;
+      --bg-2: #0f2940;
+      --accent: #ffb020;
+      --accent-2: #d38f29;
+      --muted: #8b98a6;
+      --card: #ffffff;
+      --soft-bg: #f9f9f9;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      color: #111;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .section {
+      padding: 70px 20px;
+    }
+    .heading h2 {
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .heading h2::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 4px;
+      background: var(--accent);
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -12px;
+      border-radius: 2px;
+    }
+
+    .heading p {
+      color: var(--muted);
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* HERO */
+    .service_hero {
+      background: var(--bg-1);
+      color: white;
+      padding: 80px 20px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .service_hero .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      gap: 40px;
+    }
+
+    .cta-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-gold {
+      background: var(--gradient);
+      color: #111;
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+    }
+
+    .btn-ghost:hover {
+      background: white;
+      color: var(--bg-1);
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 20px;
+      color: #111;
+      max-width: 300px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, .18);
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero-card img {
+      border-radius: 14px;
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+      margin: 12px 0;
+    }
+
+    .hero-card .row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .hero-card .price {
+      color: var(--accent);
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .service-card {
+      background: var(--soft-bg);
+      padding: 28px 22px;
+      border-radius: 14px;
+      transition: 0.35s;
+      cursor: pointer;
+    }
+
+    .service-card i {
+      font-size: 32px;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      background: #fff7ea;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .1);
+    }
+
+:root {
+  --bg-1: #071022;
+  --bg-2: #0f2940;
+  --accent: #ffb020;
+  --accent-2: #d38f29;
+  --muted: #8b98a6;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.06);
+}
+
+.fleet {
+  padding: 4rem 5%;
+  background: var(--bg-1);
+  color: var(--card);
+  text-align: center;
+}
+
+
+.fleet .heading p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* Grid layout */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Card style */
+.fleet-card {
+  background: var(--glass);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.fleet-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.fleet-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fleet-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.fleet-info .price {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.fleet-info .btn {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: var(--accent);
+  color: var(--bg-1);
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.fleet-info .btn:hover {
+  background: var(--accent-2);
+  transform: translateY(-3px);
+}
+
+/* Hover effect */
+.fleet-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+
+    /* Offers */
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .offer {
+      background: #fff7ea;
+      padding: 24px;
+      border-radius: 14px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .offer:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--accent);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: .8rem;
+      color: #111;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .testi {
+      background: var(--soft-bg);
+      padding: 22px;
+      border-radius: 14px;
+      transition: 0.3s;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .testi:hover {
+      transform: translateY(-6px);
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .1);
+    }
+
+    .who {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .avatar img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+    }
+
+    /* Trust bar */
+    .trustbar {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .trustbar img {
+      max-height: 60px;
+      object-fit: contain;
+      transition: 0.3s;
+      filter: grayscale(1);
+    }
+
+    .trustbar img:hover {
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--bg-1);
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 60px auto;
+      border-radius: 16px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .cta a {
+      background: var(--gradient);
+      color: #111;
+      padding: 14px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      filter: brightness(1.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(30px);
+      }
+    }
+  </style>
 </head>
 
 <body>
+
   <!-- HERO -->
   <section class="service_hero">
     <div class="wrap">
@@ -28,8 +444,7 @@
       </div>
       <div class="hero-card">
         <div class="row"><strong>Today’s Spotlight</strong></div>
-        <img src="assets/images/contact.jpg"
-          alt="Spotlight Car" style="border-radius:12px;height:220px;object-fit:cover;">
+        <img src="assets/images/contact.jpg" alt="Spotlight Car">
         <div class="row">
           <div>Mercedes S-Class 2024</div>
           <div class="price">$259/day</div>
@@ -47,7 +462,6 @@
         <p>Crafted for business, leisure and life’s biggest moments. Pick a service, we’ll perfect the details.</p>
       </div>
       <div class="services-grid">
-
         <article class="service-card"><i class="fa-solid fa-heart"></i>
           <h3>Wedding & VIP</h3>
           <p>Ribboning, décor & on-site coordinator included.</p>
@@ -68,61 +482,62 @@
     </div>
   </section>
 
-  <!-- FLEET -->
-  <div class="contain">
+  <!-- Our Fleet -->
+<section class="fleet">
+  <div class="container">
     <div class="heading">
-      <h2>Our Luxury Fleet</h2>
-      <p>Handpicked models with impeccable maintenance and premium interiors.</p>
+      <h2>Our Fleet</h2>
+      <p>Three simple steps and you’re on the road.</p>
     </div>
 
-<section class="car-section">
-  <div class="car-grid">
-    <?php
-      $sel="SELECT * FROM vehical";
-      $rs=$con->query($sel);
-      while($row=$rs->fetch_assoc()) {
-      ?>
+    <div class="fleet-grid">
+      <!-- Card 1 -->
+      <div class="fleet-card">
+        <img src="assets/images/contact.jpg" alt="Mercedes S-Class 2024">
+        <div class="fleet-info">
+          <h3>Mercedes S-Class 2024</h3>
+          <p class="price">$259/day</p>
+          <a href="#" class="btn">Rent Now</a>
+        </div>
+      </div>
 
+      <!-- Card 2 -->
+      <div class="fleet-card">
+        <img src="assets/images/contact.jpg" alt="BMW X5 2024">
+        <div class="fleet-info">
+          <h3>BMW X5 2024</h3>
+          <p class="price">$199/day</p>
+          <a href="#" class="btn">Rent Now</a>
+        </div>
+      </div>
 
-      <?php }?>
+      <!-- Card 3 -->
+      <div class="fleet-card">
+        <img src="assets/images/contact.jpg" alt="Audi A6 2024">
+        <div class="fleet-info">
+          <h3>Audi A6 2024</h3>
+          <p class="price">$179/day</p>
+          <a href="#" class="btn">Rent Now</a>
+        </div>
+      </div>
 
+      <!-- Card 4 -->
+      <div class="fleet-card">
+        <img src="assets/images/contact.jpg" alt="Range Rover Evoque">
+        <div class="fleet-info">
+          <h3>Range Rover Evoque</h3>
+          <p class="price">$229/day</p>
+          <a href="#" class="btn">Rent Now</a>
+        </div>
+      </div>
     </div>
+  </div>
+  <a href=""style="text-decoration:none; color:white; padding:10px 20px;margin:10px;">View all→</a>
 </section>
 
-  </div>
-
-  <!-- Modal -->
-
-
-  <!-- HOW IT WORKS -->
-  <section class="section">
-    <div class="container">
-      <div class="heading">
-        <h2>How It Works</h2>
-        <p>Three simple steps and you’re on the road.</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <div class="num">1</div>
-          <h3>Select</h3>
-          <p>Pick your vehicle, dates and add-ons.</p>
-        </div>
-        <div class="step">
-          <div class="num">2</div>
-          <h3>Verify</h3>
-          <p>Quick KYC & secure payment. Fully encrypted.</p>
-        </div>
-        <div class="step">
-          <div class="num">3</div>
-          <h3>Drive</h3>
-          <p>Doorstep delivery or airport pickup. Enjoy the ride.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- OFFERS -->
-  <section class="section" style="padding-top:24px">
+  <section class="section">
     <div class="container">
       <div class="heading">
         <h2>Special Offers</h2>
@@ -155,7 +570,7 @@
       </div>
       <div class="testi-grid">
         <article class="testi">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          <i class="fa-solid fa-star" style="color:var(--accent)"></i>
           “Pristine cars and seamless airport pickup. Felt like a private service.”
           <div class="who">
             <span class="avatar"><img
@@ -167,7 +582,7 @@
           </div>
         </article>
         <article class="testi">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          <i class="fa-solid fa-star" style="color:var(--accent)"></i>
           “The S-Class was immaculate. Concierge handled everything.”
           <div class="who">
             <span class="avatar"><img
@@ -179,7 +594,7 @@
           </div>
         </article>
         <article class="testi">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i>
+          <i class="fa-solid fa-star" style="color:var(--accent)"></i>
           “Booked for our wedding—spectacular arrival and support on the day.”
           <div class="who">
             <span class="avatar"><img
@@ -195,17 +610,17 @@
   </section>
 
   <!-- TRUST BAR -->
-  <section class="section" style="padding-top:24px">
+  <section class="section">
     <div class="container">
       <div class="heading">
         <h2>Trusted Partners</h2>
         <p>We collaborate with the world’s leading brands & networks.</p>
       </div>
       <div class="trustbar">
-        <img src="assets/images/amex.png" alt="Amex" style="width:200;height: 60;">
-        <img src="assets/images/visa.jpg" alt="Visa" style="width:200;height: 60;">
-        <img src="assets/images/mastyercard.jpg" alt="Mastercard" style="width:200;height: 60;">
-        <img src="assets/images/hertz.jpg" alt="Hertz" style="width:200;height: 60;">
+        <img src="assets/images/amex.png" alt="Amex">
+        <img src="assets/images/visa.jpg" alt="Visa">
+        <img src="assets/images/mastyercard.jpg" alt="Mastercard">
+        <img src="assets/images/hertz.jpg" alt="Hertz">
       </div>
     </div>
   </section>
@@ -218,8 +633,6 @@
     </div>
     <a href="#">Get a Quote</a>
   </div>
-  <?php include("includes/footer.php"); ?>
-  <script src="assets/js/service.js"></script>
+ <?php include("includes/footer.php"); ?>
 </body>
-
 </html>

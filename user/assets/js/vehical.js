@@ -1,4 +1,4 @@
- // Filter functionality
+
     const searchInput = document.getElementById("searchInput");
     const typeFilter = document.getElementById("typeFilter");
     const brandFilter = document.getElementById("brandFilter");
@@ -36,22 +36,57 @@
       filterCars();
     });
 
-    // Modal
-    function openModal(btn) {
-      const card = btn.closest(".car-card");
-      document.getElementById("modalImage").src = card.querySelector("img").src;
-      document.getElementById("modalTitle").innerText = card.dataset.name;
+  // Modal elements
+const carModal = document.getElementById("carModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const shareBtn = document.getElementById("shareBtn");
 
-      const details = card.querySelectorAll(".icons p");
-      document.getElementById("modalBrand").innerText = details[0].textContent.replace('Brand:', '').trim();
-      document.getElementById("modalType").innerText = details[1].textContent.replace('Type:', '').trim();
-      document.getElementById("modalSeats").innerText = details[2].textContent.replace('Seats:', '').trim();
-      document.getElementById("modalFuel").innerText = details[3].textContent.replace('Fuel:', '').trim();
-      document.getElementById("modalTransmission").innerText = details[4].textContent.replace('Transmission:', '').trim();
-      document.getElementById("modalPrice").innerText = card.dataset.price;
+// Open modal
+function openModal(btn) {
+    const card = btn.closest('.car-card');
+    
+    document.getElementById('modalImage').src = card.querySelector('img').src;
+    document.getElementById('modalTitle').innerText = card.dataset.name;
+    document.getElementById('modalPrice').innerText = card.dataset.price;
+    document.getElementById('modalBrand').innerText = card.dataset.brand;
+    document.getElementById('modalType').innerText = card.dataset.type;
+    document.getElementById('modalSeats').innerText = card.dataset.seats;
+    document.getElementById('modalFuel').innerText = card.dataset.fuel;
+    document.getElementById('modalTransmission').innerText = card.dataset.transmission;
 
-      document.getElementById("carModal").style.display = "flex";
+    // Pass car ID to booking page
+    const bookNowBtn = document.getElementById('bookNowBtn');
+    bookNowBtn.href = `../pages/book_rent.php?id=${card.dataset.id}`;
+
+    carModal.style.display = "flex";
+}
+
+// Close modal
+function closeModal() {
+    carModal.style.display = "none";
+}
+
+// Attach close function
+closeModalBtn.onclick = closeModal;
+
+// Close modal when clicking outside modal content
+window.onclick = function(e) {
+    if (e.target === carModal) {
+        closeModal();
     }
-    function closeModal() {
-      document.getElementById("carModal").style.display = "none";
+}
+
+// Share button functionality
+shareBtn.onclick = function () {
+    const shareData = {
+        title: document.getElementById("modalTitle").innerText,
+        text: "Check out this car for rent!",
+        url: window.location.href
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(err => console.log("Error sharing:", err));
+    } else {
+        alert("Sharing not supported in this browser. Copy URL: " + shareData.url);
     }
+};

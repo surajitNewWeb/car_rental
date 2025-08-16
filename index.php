@@ -4,38 +4,12 @@
     <div class="hero-inner container">
 
       <div class="hero-copy">
-        <div class="search-bubble shadow">
-          <select aria-label="type">
-            <option>Used Cars</option>
-            <option>New Cars</option>
-          </select>
-          <select aria-label="makes">
-            <option>Any Makes</option>
-            <option>Tesla</option>
-            <option>BMW</option>
-            <option>Audi</option>
-          </select>
-          <select aria-label="models">
-            <option>Any Models</option>
-            <option>Model S</option>
-            <option>Model 3</option>
-            <option>Model X</option>
-          </select>
-          <select aria-label="price">
-            <option>All Prices</option>
-            <option>Below $20,000</option>
-            <option>$20,000 - $50,000</option>
-            <option>Above $50,000</option>
-          </select>
-
-          <button class="search-btn btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
 
         <h1>Enjoy your life with our comfortable car</h1>
         <p>Choose from a wide selection of vehicles — affordable rates, excellent support and easy booking. Drive happy, drive safe.</p>
 
         <div class="hero-cta">
-          <a class="btn btn-gold btn-lg" href="#booking">Explore Now</a>
+          <a class="log btn-lg" href="#booking">Explore Now</a>
           <a class="btn btn-ghost" href="#recomended">Browse Cars</a>
         </div>
       </div>
@@ -73,7 +47,7 @@
           <h3>Hyundai Creta</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹1,999 / day</div>
-            <button class="btns">Rent Now</button>
+            <button class="btn">Rent Now</button>
           </div>
         </div>
       </div>
@@ -84,7 +58,7 @@
           <h3>Maruti Swift</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹999 / day</div>
-            <button class="btns">Rent Now</button>
+            <button class="btn">Rent Now</button>
           </div>
         </div>
       </div>
@@ -95,7 +69,7 @@
           <h3>Toyota Innova</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹2,999 / day</div>
-            <button class="btns">Rent Now</button>
+            <button class="btn">Rent Now</button>
           </div>
         </div>
       </div>
@@ -106,7 +80,7 @@
           <h3>BS6 Mahindra Scorpio</h3>
           <div class="d-flex justify-content-between align-items-center">
             <div class="price">₹3,499 / day</div>
-            <button class="btns">Rent Now</button>
+            <button class="btn">Rent Now</button>
           </div>
         </div>
       </div>
@@ -145,62 +119,6 @@
       <img src="user/assets/images/online_inperson .jpg" alt="Online & in-person">
     </div>
   </section>
-
-  <!-- BOOK YOUR VEHICLE -->
-  <div class="heading" id="booking"><h2>BOOK YOUR VEHICAL</h2></div>
-  <div class="booking-form container">
-    <form id="carBookingForm">
-      <div class="form-row mb-3">
-        <div class="form-group">
-          <label for="pickup-location">Pickup Location</label>
-          <select id="pickup-location" required>
-            <option value="">Select Location</option>
-            <option value="New York">New York</option>
-            <option value="Los Angeles">Los Angeles</option>
-            <option value="Chicago">Chicago</option>
-            <option value="Houston">Houston</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="car-type">Car Type</label>
-          <select id="car-type" required>
-            <option value="">Select Car Type</option>
-            <option value="Sedan">Sedan</option>
-            <option value="SUV">SUV</option>
-            <option value="Hatchback">Hatchback</option>
-            <option value="Convertible">Convertible</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row mb-3">
-        <div class="form-group">
-          <label for="pickup-date">Pickup Date</label>
-          <input type="date" id="pickup-date" required>
-        </div>
-
-        <div class="form-group">
-          <label for="return-date">Return Date</label>
-          <input type="date" id="return-date" required>
-        </div>
-      </div>
-
-      <div class="form-row mb-1">
-        <div class="form-group">
-          <label for="pickup-time">Pickup Time</label>
-          <input type="time" id="pickup-time" required>
-        </div>
-
-        <div class="form-group">
-          <label for="return-time">Return Time</label>
-          <input type="time" id="return-time" required>
-        </div>
-      </div>
-
-    </form>
-    <button type="submit" class="book-btn">Book Now</button>
-  </div>
 
   <!-- RECOMMENDED -->
   <div class="heading" id="recomended"><h2>RECOMENDED CAR FOR YOU</h2></div>

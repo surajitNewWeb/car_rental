@@ -48,7 +48,7 @@ if (isset($_POST['add'])) {
   <!-- Custom styles -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/add.css" rel="stylesheet">
+  <link href="assets/css/add_vehical.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

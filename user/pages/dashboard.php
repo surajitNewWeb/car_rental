@@ -1,60 +1,107 @@
+
 <?php
-session_start();
-if(!isset($_SESSION['un'])){
-  header("location:login.php");
+include("dash_head.php");
+include("../config/db.php");
+
+// Check login
+if(!isset($_SESSION['user_id'])){
+    header("location: login.php");
+    exit;
 }
+
+$user_id = $_SESSION['user_id'];
+
+// Fetch username
+$user_sql = "SELECT username FROM users WHERE id='$user_id'";
+$user_res = mysqli_query($con, $user_sql);
+$user_row = mysqli_fetch_assoc($user_res);
+$username = $user_row['username'] ?? "Guest";
+
+// Fetch user stats
+$total_bookings = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM bookings WHERE user_id='$user_id'"))['total'];
+$upcoming_bookings = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM bookings WHERE user_id='$user_id' AND pickup_date >= CURDATE()"))['total'];
+$total_spent = mysqli_fetch_assoc(mysqli_query($con, "SELECT SUM(total_price) AS total FROM bookings WHERE user_id='$user_id' AND status='Confirmed'"))['total'] ?? 0;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Car Rental</title>
-
-  <!-- Bootstrap 5 -->
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/car_rental/user/assets/css/style.css">
-
-
+  <style>
+    body { background:#071022; color:#fff; font-family:'DM Sans',sans-serif; }
+    .card {
+        background:#0f2940;
+        border-radius:12px;
+        padding:20px;
+        margin-bottom:20px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    }
+    h2 { color:#ffb020; margin:20px 0; }
+    .welcome { font-size:1.3rem; margin-bottom:20px; }
+    .btn-custom {
+        background:#ffb020; color:#071022; font-weight:bold;
+        border-radius:8px; padding:10px 20px; text-decoration:none;
+    }
+    .btn-custom:hover { background:#d98c00; color:#fff; }
+    .stat { font-size:2rem; font-weight:bold; color:#3ad7c0; margin-bottom:5px; }
+    .stat-label { color:#8b98a6; font-size:0.9rem; }
+  </style>
 </head>
 <body>
+<div class="container mt-4">
+  <h2>User Dashboard</h2>
+  <p class="welcome">Welcome back, <strong><?php echo htmlspecialchars($username); ?></strong>👋</p>
 
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="/car_rental/index.php">
-        <img src="/car_rental/user/assets/images/logo.jpg" alt="logo">
-      </a>
-
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <i class="fa fa-bars" style="color:#fff;"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Brows Car</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Book Car</a></li>
-          <li class="nav-item"><a class="nav-link" href="">Booking Details</a></li>
-        </ul>
-
-        <div class="d-flex align-items-center gap-2">
-           <a href="#" class="text-decoration-none text-danger"> <i class="fa-regular fa-user me-1"></i><?php echo $_SESSION['un'] ?></a>
-          <a href="/car_rental/user/pages/logout.php" class="btn btn-gold btn-sm"onclick="return confirmLogout();">Log out</a>
-        </div>
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="stat"><?= $total_bookings ?></div>
+        <div class="stat-label">Total Bookings</div>
       </div>
     </div>
-  </nav>
-   <script>
-    function confirmLogout() {
-      return confirm("Are you sure you want to logout?");
-    }
-  </script>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="stat"><?= $upcoming_bookings ?></div>
+        <div class="stat-label">Upcoming Bookings</div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="stat">$<?= number_format($total_spent,2) ?></div>
+        <div class="stat-label">Total Spent</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <h4>📖 My Bookings</h4>
+        <p>View and manage your car bookings.</p>
+        <a href="my_booking.php" class="btn-custom">Go</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <h4>🚘 Available Cars</h4>
+        <p>Browse and rent your next ride.</p>
+        <a href="vehical.php" class="btn-custom">Browse</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <h4>⚙️ Profile Settings</h4>
+        <p>Update your account information.</p>
+        <a href="profile.php" class="btn-custom">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
